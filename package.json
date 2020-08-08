@@ -1,0 +1,19 @@
+{
+  "name": "search-news-frontend",
+  "version": "0.0.1",
+  "description": "frontend for a news search service",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Julia-ivv/search-news-frontend.git"
+  },
+  "author": "Julia Ivanova",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Julia-ivv/search-news-frontend/issues"
+  },
+  "homepage": "https://github.com/Julia-ivv/search-news-frontend#readme"
+}
