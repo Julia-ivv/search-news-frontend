@@ -1,0 +1,19 @@
+.search__input {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  color: #1a1b22;
+  width: 608px;
+  height: 64px;
+  border: solid 1px #d1d2d6;
+  box-sizing: border-box;
+  border-radius: 100px;
+  backdrop-filter: blur(8px);
+  padding-left: 24px;
+}
+
+.search__input::placeholder {
+  color: #b6bcbf;
+}

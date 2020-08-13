@@ -1,0 +1,16 @@
+@import url(./__btn-login/menu__btn-login.css);
+@import url(./__link/menu__link.css);
+@import url(./__btn-caption/menu__btn-caption.css);
+@import url(./__btn-icon/menu__btn-icon.css);
+@import url(./__link/_active/menu__link_active.css);
+
+.menu {
+  padding-right: 104px;
+  padding-top: 19px;
+  padding-bottom: 13px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+}

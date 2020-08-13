@@ -1,0 +1,10 @@
+@import url(./_style/_black/header_style_black.css);
+@import url(./_style/_white/header_style_white.css);
+@import url(../menu/menu.css);
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(196, 196, 196, .01);
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, .2);
+}
