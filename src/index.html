@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="./images/favicon.png" type="image/png">
   <title>NewsExplorer</title>
-  <link rel="stylesheet" href="./pages/index.css">
 </head>
 <body>
   <div class="root" id="main">
@@ -16,7 +16,7 @@
           <a href="saved-articles/index.html" class="menu__link">Сохранённые статьи</a>
           <button class="menu__btn-login">
             <p class="menu__btn-caption">Грета</p>
-            <img src="./images/logout.svg" alt="logout" class="menu__btn-icon">
+            <img src="<%=require('./images/logout.svg').default%>" alt="logout" class="menu__btn-icon">
           </button>
         </nav>
       </header>
@@ -36,5 +36,6 @@
 
     </footer>
   </div>
+
 </body>
 </html>
