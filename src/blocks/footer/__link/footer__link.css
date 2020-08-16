@@ -1,0 +1,6 @@
+.footer__link {
+  display: inline;
+  text-decoration: none;
+  color: inherit;
+  /* margin-left: 28px; */
+}
