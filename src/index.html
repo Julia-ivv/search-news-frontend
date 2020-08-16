@@ -29,7 +29,7 @@
         </form>
       </section>
     </div>
-    <section class="results">
+    <section class="results root__results">
       <h3 class="block-title results__block-title">Результаты поиска</h3>
       <div class="articles">
         <div class="article">
@@ -75,16 +75,16 @@
       </div>
       <button class="button results__more-button">Показать еще</button>
     </section>
-    <section class="preloader">
+    <section class="preloader root__preloader">
       <i class="circle-preloader"></i>
       <p class="preloader__text">Идет поиск новостей...</p>
     </section>
-    <section class="not-found">
+    <section class="not-found root__not-found">
       <img src="<%=require('./images/not-found.svg').default%>" alt="Ничего не найдено" class="not-found__image">
       <p class="not-found__title">Ничего не найдено</p>
       <p class="not-found__text">К сожалению по вашему запросу ничего не найдено.</p>
     </section>
-    <section class="author">
+    <section class="author root__author">
       <img src="<%=require('./images/avatar.png').default%>" alt="Аватар" class="author__image">
       <div class="author__about">
         <h3 class="block-title author__block-title">Об авторе</h3>
