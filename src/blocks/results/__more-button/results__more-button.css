@@ -1,0 +1,9 @@
+.results__more-button {
+  border-radius: 80px;
+  background-color: #fff;
+  width: 288px;
+  height: 64px;
+  margin: 64px auto 0;
+  border: none;
+  display: block;
+}

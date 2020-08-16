@@ -1,0 +1,15 @@
+@import url(./__title/article__title.css);
+@import url(./__text/article__text.css);
+@import url(./__source/article__source.css);
+@import url(./__image/article__image.css);
+@import url(./__date/article__date.css);
+@import url(./__bookmark/article__bookmark.css);
+@import url(./__about/article__about.css);
+
+.article {
+  background-color: #fff;
+  /* box-sizing: border-box; */
+  border-radius: 16px;
+  position: relative;
+  /* min-height: 576px; */
+}
