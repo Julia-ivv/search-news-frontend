@@ -15,3 +15,5 @@
 @import url(../blocks/not-found/not-found.css);
 @import url(../blocks/author/author.css);
 @import url(../blocks/footer/footer.css);
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/error-message/error-message.css);
