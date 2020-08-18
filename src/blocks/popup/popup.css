@@ -10,8 +10,8 @@
 @import url(./__button/_enabled/popup__button_enabled.css);
 @import url(./__input-container/popup__input-container.css);
 @import url(./__input-title/popup__input-title.css);
-@import url(./__sign-up/popup__sign-up.css);
-@import url(./__sign-up-button/popup__sign-up-button.css);
+@import url(./__or/popup__or.css);
+@import url(./__or-button/popup__or-button.css);
 
 .popup {
   position: fixed;
