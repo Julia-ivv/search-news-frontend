@@ -7,11 +7,11 @@
 @import url(./_is-opened/popup_is-opened.css);
 @import url(./__image/popup__image.css);
 @import url(./__picture/popup__picture.css);
-@import url(./__button/_enabled/popup__button_enabled.css);
 @import url(./__input-container/popup__input-container.css);
 @import url(./__input-title/popup__input-title.css);
 @import url(./__or/popup__or.css);
 @import url(./__or-button/popup__or-button.css);
+@import url(./__login-button/popup__login-button.css);
 
 .popup {
   position: fixed;
