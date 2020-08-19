@@ -7,11 +7,11 @@ const OptimizeCssAssetWebpackPlugin = require('optimize-css-assets-webpack-plugi
 
 module.exports = {
   entry: {
-    main: './src/index.js',
-    // savedArticles: './saved-articles/index.js',
+    main: './src/js/index.js',
+    articles: './src/js/articles/index.js',
   },
   output: {
-    filename: '[name].[hash].js',
+    filename: './js/[name].[chunkhash].js',
     path: path.resolve(__dirname, 'dist'),
   },
   resolve: {
@@ -21,7 +21,16 @@ module.exports = {
   },
   plugins: [
     new HTMLWebpackPlugin({
-      template: './src/index.html',
+      inject: false,
+      template: './src/pages/index.html',
+      filename: 'index.html',
+      chunks: ['main'],
+    }),
+    new HTMLWebpackPlugin({
+      inject: false,
+      template: './src/pages/articles.html',
+      filename: 'articles.html',
+      chunks: ['articles'],
     }),
     new CopyWebpackPlugin({
       patterns: [
@@ -32,7 +41,7 @@ module.exports = {
       ],
     }),
     new MiniCssExtractPlugin({
-      filename: '[name].[hash].css',
+      filename: 'style/style.[contenthash].css',
     }),
     new OptimizeCssAssetWebpackPlugin({
       assetNameRegExp: /\.css$/g,
@@ -52,7 +61,9 @@ module.exports = {
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
-            options: {},
+            options: {
+              publicPath: '../',
+            },
           },
           {
             loader: 'css-loader',

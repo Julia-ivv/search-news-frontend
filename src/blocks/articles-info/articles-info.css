@@ -1,0 +1,8 @@
+@import url(./__span-accept/articles-info__span-accept.css);
+/* @import url(./__block-text/articles-info__block-text.css); */
+@import url(./__block-title/articles-info__block-title.css);
+
+.articles-info {
+  width: 85.55%;
+  margin: 40px auto 56px;
+}

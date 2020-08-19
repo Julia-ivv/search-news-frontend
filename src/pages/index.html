@@ -3,37 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="./images/favicon.png" type="image/png">
+  <link rel="icon" href="../images/favicon.png" type="image/png">
   <title>NewsExplorer</title>
+  <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.css %>">
 </head>
 <body>
   <div class="root" id="main">
     <div class="main-picture">
-      <header class="header header_style_white">
+      <header class="header header_style_black">
         <p class="logo">NewsExplorer</p>
         <nav class="menu">
-          <a href="#main" class="menu__link menu__link_active">Главная</a>
-          <a href="saved-articles/index.html" class="menu__link">Сохранённые статьи</a>
-          <button class="menu__btn-login">
+          <a href="./index.html" class="menu__link menu__link_underline_white">Главная</a>
+          <a href="./articles.html" class="menu__link">Сохранённые статьи</a>
+          <button class="menu__btn-login menu__btn-login_style_white">
             <p class="menu__btn-caption">Грета</p>
-            <img src="<%=require('./images/logout.svg').default%>" alt="logout" class="menu__btn-icon">
+            <img src="<%=require('../images/logout-white.svg').default%>" alt="logout" class="menu__btn-icon">
           </button>
         </nav>
       </header>
+
       <section class="search">
         <h1 class="search__title">Что в мире творится?</h1>
-        <h2 class="search__subtitle">Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.</h2>
+        <h2 class="block-text block-text_style_white search__block-text">Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.</h2>
         <form action="" class="search__form" name="search">
           <input type="text" class="search__input" name="keyword" placeholder="Введите тему новости">
           <button class="button search__button button_style_blue">Искать</button>
         </form>
       </section>
     </div>
+
     <section class="results root__results">
       <h3 class="block-title results__block-title">Результаты поиска</h3>
       <div class="articles">
         <div class="article">
-          <img src="<%=require('./images/image_08.png').default%>" alt="Национальное достояние – парки" class="article__image">
+          <img src="<%=require('../images/image_08.png').default%>" alt="Национальное достояние – парки" class="article__image">
           <div class="article__about">
             <p class="article__date">2 августа, 2019</p>
             <h4 class="article__title">Национальное достояние – парки</h4>
@@ -43,7 +46,7 @@
           <button class="article__bookmark"></button>
         </div>
         <div class="article">
-          <img src="<%=require('./images/image_04.png').default%>" alt="Лесные огоньки" class="article__image">
+          <img src="<%=require('../images/image_04.png').default%>" alt="Лесные огоньки" class="article__image">
           <div class="article__about">
             <p class="article__date">2 августа, 2019</p>
             <h4 class="article__title">Лесные огоньки: история одной фотографии</h4>
@@ -53,7 +56,7 @@
           <button class="article__bookmark"></button>
         </div>
         <div class="article">
-          <img src="<%=require('./images/image_07.png').default%>" alt="Первозданная тайга" class="article__image">
+          <img src="<%=require('../images/image_07.png').default%>" alt="Первозданная тайга" class="article__image">
           <div class="article__about">
             <p class="article__date">2 августа, 2019</p>
             <h4 class="article__title">«Первозданная тайга»: новый фотопроект Игоря Шпиленка</h4>
@@ -63,7 +66,7 @@
           <button class="article__bookmark"></button>
         </div>
         <div class="article">
-          <img src="<%=require('./images/image_06.png').default%>" alt="Национальное достояние – парки" class="article__image">
+          <img src="<%=require('../images/image_06.png').default%>" alt="Национальное достояние – парки" class="article__image">
           <div class="article__about">
             <p class="article__date">2 августа, 2019</p>
             <h4 class="article__title">Национальное достояние – парки</h4>
@@ -75,40 +78,44 @@
       </div>
       <button class="button results__more-button">Показать еще</button>
     </section>
+
     <section class="preloader root__preloader">
       <i class="circle-preloader"></i>
-      <p class="preloader__text">Идет поиск новостей...</p>
+      <p class="block-text block-text_style_gray preloader__block-text">Идет поиск новостей...</p>
     </section>
+
     <section class="not-found root__not-found">
-      <img src="<%=require('./images/not-found.svg').default%>" alt="Ничего не найдено" class="not-found__image">
+      <img src="<%=require('../images/not-found.svg').default%>" alt="Ничего не найдено" class="not-found__image">
       <p class="not-found__title">Ничего не найдено</p>
-      <p class="not-found__text">К сожалению по вашему запросу ничего не найдено.</p>
+      <p class="block-text block-text_style_gray not-found__block-text">К сожалению по вашему запросу ничего не найдено.</p>
     </section>
+
     <section class="author root__author">
-      <img src="<%=require('./images/avatar.png').default%>" alt="Аватар" class="author__image">
+      <img src="<%=require('../images/avatar.png').default%>" alt="Аватар" class="author__image">
       <div class="author__about">
         <h3 class="block-title author__block-title">Об авторе</h3>
-        <p class="author__text">Это блок с описанием автора проекта. Здесь следует указать, как вас зовут, чем вы занимаетесь, какими технологиями разработки владеете.</p>
-        <p class="author__text">Также можно рассказать о процессе обучения в Практикуме, чему вы тут научились, и чем можете помочь потенциальным заказчикам.</p>
+        <p class="block-text block-text_style_dark author__block-text">Это блок с описанием автора проекта. Здесь следует указать, как вас зовут, чем вы занимаетесь, какими технологиями разработки владеете.</p>
+        <p class="block-text block-text_style_dark author__block-text">Также можно рассказать о процессе обучения в Практикуме, чему вы тут научились, и чем можете помочь потенциальным заказчикам.</p>
       </div>
     </section>
+
     <footer class="footer">
       <p class="footer__copyright">&copy; 2020 Supersite, Powered by News API</p>
       <ul class="footer__links">
         <li class="footer__link">
-          <a href="#main" class="footer__link footer__link_type_text">Главная</a>
+          <a href="./index.html" class="footer__link footer__link_type_text">Главная</a>
         </li>
         <li class="footer__link">
           <a href="https://praktikum.yandex.ru/" class="footer__link footer__link_type_text" target="blank">Яндекс.Практикум</a>
         </li>
         <li class="footer__link">
           <a href="https://github.com/" class="footer__link footer__link_type_icon" target="blank">
-            <img src="<%=require('./images/github.svg').default%>" alt="иконка github" class="footer__icon">
+            <img src="<%=require('../images/github.svg').default%>" alt="иконка github" class="footer__icon">
           </a>
         </li>
         <li class="footer__link">
           <a href="https://www.facebook.com/" class="footer__link footer__link_type_icon" target="blank">
-            <img src="<%=require('./images/fb.svg').default%>" alt="иконка facebook" class="footer__icon"></a>
+            <img src="<%=require('../images/fb.svg').default%>" alt="иконка facebook" class="footer__icon"></a>
           </a>
         </li>
       </ul>
@@ -117,7 +124,7 @@
 
   <div class="popup" id="popup-login">
     <div class="popup__content">
-      <img src="<%=require('./images/close.svg').default%>" alt="закрыть" class="popup__close">
+      <img src="<%=require('../images/close.svg').default%>" alt="закрыть" class="popup__close">
       <h3 class="popup__title">Вход</h3>
       <form class="popup__form" name="form-login" id="form-login">
         <div class="popup__input-container">
@@ -144,7 +151,7 @@
 
   <div class="popup" id="popup-signup">
     <div class="popup__content">
-      <img src="<%=require('./images/close.svg').default%>" alt="закрыть" class="popup__close">
+      <img src="<%=require('../images/close.svg').default%>" alt="закрыть" class="popup__close">
       <h3 class="popup__title">Регистрация</h3>
       <form class="popup__form" name="form-signup" id="form-signup">
         <div class="popup__input-container">
@@ -176,11 +183,12 @@
 
   <div class="popup" id="popup-success">
     <div class="popup__content">
-      <img src="<%=require('./images/close.svg').default%>" alt="закрыть" class="popup__close">
+      <img src="<%=require('../images/close.svg').default%>" alt="закрыть" class="popup__close">
       <h3 class="popup__title popup__title_style_black">Пользователь успешно зарегистрирован!</h3>
       <button type="button" class="popup__login-button">Выполнить вход</button>
     </div>
   </div>
 
+  <script type="module" src="<%= htmlWebpackPlugin.files.js %>"></script>
 </body>
 </html>

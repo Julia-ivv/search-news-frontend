@@ -1,6 +1,9 @@
+@import url(./_style/_black/menu__btn-login_style_black.css);
+@import url(./_style/_white/menu__btn-login_style_white.css);
+
 .menu__btn-login {
   background-color: transparent;
-  border: 1px solid #fff;
+  /* border: 1px solid #fff; */
   box-sizing: border-box;
   border-radius: 100px;
   /* width: 112px;

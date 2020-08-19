@@ -1,0 +1,12 @@
+@import url(./_style/_dark-opacity/block-text_style_dark-opacity.css);
+@import url(./_style/_dark/block-text_style_dark.css);
+@import url(./_style/_white/block-text_style_white.css);
+@import url(./_style/_gray/block-text_style_gray.css);
+
+.block-text {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+}

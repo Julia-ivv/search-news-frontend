@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../images/favicon.png" type="image/png">
+  <title>Saved articles</title>
+  <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.css %>">
+</head>
+<body>
+  <div class="root" id="main">
+    <header class="header header_style_white">
+      <p class="logo">NewsExplorer</p>
+      <nav class="menu">
+        <a href="./index.html" class="menu__link">Главная</a>
+        <a href="./articles.html" class="menu__link menu__link_underline_black">Сохранённые статьи</a>
+        <button class="menu__btn-login">
+          <p class="menu__btn-caption">Грета</p>
+          <img src="<%=require('../images/logout-black.svg').default%>" alt="logout" class="menu__btn-icon">
+        </button>
+      </nav>
+    </header>
+
+    <section class="articles-info">
+      <h3 class="block-text block-text_style_dark-opacity">Сохранённые статьи</h3>
+      <h1 class="block-title articles-info__block-title">Грета, у вас 5 сохранённых статей</h1>
+      <h2 class="block-text block-text_style_dark">По ключевым словам: <span class="articles-info__span-accept">Природа, Тайга</span> и <span class="articles-info__span-accept">2 другим</span></h2>
+    </section>
+
+    <footer class="footer">
+      <p class="footer__copyright">&copy; 2020 Supersite, Powered by News API</p>
+      <ul class="footer__links">
+        <li class="footer__link">
+          <a href="./index.html" class="footer__link footer__link_type_text">Главная</a>
+        </li>
+        <li class="footer__link">
+          <a href="https://praktikum.yandex.ru/" class="footer__link footer__link_type_text" target="blank">Яндекс.Практикум</a>
+        </li>
+        <li class="footer__link">
+          <a href="https://github.com/" class="footer__link footer__link_type_icon" target="blank">
+            <img src="<%=require('../images/github.svg').default%>" alt="иконка github" class="footer__icon">
+          </a>
+        </li>
+        <li class="footer__link">
+          <a href="https://www.facebook.com/" class="footer__link footer__link_type_icon" target="blank">
+            <img src="<%=require('../images/fb.svg').default%>" alt="иконка facebook" class="footer__icon"></a>
+          </a>
+        </li>
+      </ul>
+    </footer>
+  </div>
+  <script type="module" src="<%= htmlWebpackPlugin.files.js %>"></script>
+</body>
+</html>
