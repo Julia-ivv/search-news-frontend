@@ -43,7 +43,7 @@
             <p class="article__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
             <p class="article__source">Лента.ру</p>
           </div>
-          <button class="article__bookmark"></button>
+          <button class="article__icon article__icon_type_bookmark"></button>
         </div>
         <div class="article">
           <img src="<%=require('../images/image_04.png').default%>" alt="Лесные огоньки" class="article__image">
@@ -53,7 +53,7 @@
             <p class="article__text">Фотограф отвлеклась от освещения суровой политической реальности Мексики, чтобы запечатлеть ускользающую красоту одного из местных чудес природы.</p>
             <p class="article__source">Медуза</p>
           </div>
-          <button class="article__bookmark"></button>
+          <button class="article__icon article__icon_type_bookmark"></button>
         </div>
         <div class="article">
           <img src="<%=require('../images/image_07.png').default%>" alt="Первозданная тайга" class="article__image">
@@ -63,7 +63,7 @@
             <p class="article__text">Знаменитый фотограф снимает первозданные леса России, чтобы рассказать о необходимости их сохранения. В этот раз он отправился в Двинско-Пинежскую тайгу, где...</p>
             <p class="article__source">Риа</p>
           </div>
-          <button class="article__bookmark"></button>
+          <button class="article__icon article__icon_type_bookmark"></button>
         </div>
         <div class="article">
           <img src="<%=require('../images/image_06.png').default%>" alt="Национальное достояние – парки" class="article__image">
@@ -73,7 +73,7 @@
             <p class="article__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
             <p class="article__source">Дзен</p>
           </div>
-          <button class="article__bookmark"></button>
+          <button class="article__icon article__icon_type_bookmark"></button>
         </div>
       </div>
       <button class="button results__more-button">Показать еще</button>
@@ -128,13 +128,15 @@
       <h3 class="popup__title">Вход</h3>
       <form class="popup__form" name="form-login" id="form-login">
         <div class="popup__input-container">
-          <p class="popup__input-title">Email</p>
-          <input type="text" name="email" pattern="(?!.*--)[a-zA-Z0-9][\-\.\w]*(?<!-)@[a-zA-Z0-9]+[\-\.\w]*(?<!-)\.[a-zA-Z]+$" autocomplete="off" required class="popup__input popup__input_type_email" placeholder="Введите почту">
+          <label class="popup__input-title">Email
+            <input type="text" name="email" pattern="(?!.*--)[a-zA-Z0-9][\-\.\w]*(?<!-)@[a-zA-Z0-9]+[\-\.\w]*(?<!-)\.[a-zA-Z]+$" autocomplete="off" required class="popup__input popup__input_type_email" placeholder="Введите почту">
+          </label>
           <span id="error-email" class="error-message error-message_type_input">Неправильный формат email</span>
         </div>
         <div class="popup__input-container">
-          <p class="popup__input-title">Пароль</p>
-          <input type="password" name="password" autocomplete="off" required class="popup__input popup__input_type_password" placeholder="Введите пароль">
+          <label class="popup__input-title">Пароль
+            <input type="password" name="password" autocomplete="off" required class="popup__input popup__input_type_password" placeholder="Введите пароль">
+          </label>
           <span id="error-password" class="error-message error-message_type_input">Это обязательное поле</span>
         </div>
         <div class="popup__input-container">
@@ -155,18 +157,21 @@
       <h3 class="popup__title">Регистрация</h3>
       <form class="popup__form" name="form-signup" id="form-signup">
         <div class="popup__input-container">
-          <p class="popup__input-title">Email</p>
-          <input type="text" name="email" pattern="(?!.*--)[a-zA-Z0-9][\-\.\w]*(?<!-)@[a-zA-Z0-9]+[\-\.\w]*(?<!-)\.[a-zA-Z]+$" autocomplete="off" required class="popup__input popup__input_type_email" placeholder="Введите почту">
+          <label class="popup__input-title">Email
+            <input type="text" name="email" pattern="(?!.*--)[a-zA-Z0-9][\-\.\w]*(?<!-)@[a-zA-Z0-9]+[\-\.\w]*(?<!-)\.[a-zA-Z]+$" autocomplete="off" required class="popup__input popup__input_type_email" placeholder="Введите почту">
+          </label>
           <span id="error-email" class="error-message error-message_type_input">Неправильный формат email</span>
         </div>
         <div class="popup__input-container">
-          <p class="popup__input-title">Пароль</p>
-          <input type="password" name="password" autocomplete="off" required class="popup__input popup__input_type_password" placeholder="Введите пароль">
+          <label class="popup__input-title">Пароль
+            <input type="password" name="password" autocomplete="off" required class="popup__input popup__input_type_password" placeholder="Введите пароль">
+          </label>
           <span id="error-password" class="error-message error-message_type_input">Это обязательное поле</span>
         </div>
         <div class="popup__input-container">
-          <p class="popup__input-title">Имя</p>
-          <input type="text" name="name" autocomplete="off" required minlength="2" maxlength="30" class="popup__input popup__input_type_name" placeholder="Введите свое имя">
+          <label class="popup__input-title">Имя
+            <input type="text" name="name" autocomplete="off" required minlength="2" maxlength="30" class="popup__input popup__input_type_name" placeholder="Введите свое имя">
+          </label>
           <span id="error-name" class="error-message error-message_type_input">Длина от 2 до 30 символов</span>
         </div>
         <div class="popup__input-container">

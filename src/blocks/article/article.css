@@ -3,13 +3,14 @@
 @import url(./__source/article__source.css);
 @import url(./__image/article__image.css);
 @import url(./__date/article__date.css);
-@import url(./__bookmark/article__bookmark.css);
 @import url(./__about/article__about.css);
+@import url(./__icon/article__icon.css);
+@import url(./__icon/_type/_bookmark/article__icon_type_bookmark.css);
+@import url(./__icon/_type/_trash/article__icon_type_trash.css);
+@import url(./__keyword/article__keyword.css);
 
 .article {
   background-color: #fff;
-  /* box-sizing: border-box; */
   border-radius: 16px;
   position: relative;
-  /* min-height: 576px; */
 }
