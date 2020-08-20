@@ -6,4 +6,10 @@
   margin: 0 auto 0;
   border: none;
   display: block;
+  cursor: url('images/cursor-lapka.svg'), auto;
+  transition: opacity 2s;
+}
+
+.results__more-button:hover {
+  opacity: .9;
 }

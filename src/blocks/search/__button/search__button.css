@@ -3,4 +3,13 @@
   height: 64px;
   position: absolute;
   right: 0;
+  transition: background-color 2s;
+}
+
+.search__button:hover {
+  background-color: #347eff;
+}
+
+.search__button:active {
+  background-color: #2a65cc;
 }

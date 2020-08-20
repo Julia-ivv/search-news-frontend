@@ -38,6 +38,10 @@ module.exports = {
           from: path.resolve(__dirname, 'src/images/favicon.png'),
           to: path.resolve(__dirname, 'dist/images'),
         },
+        {
+          from: path.resolve(__dirname, 'src/images/bookmark-marked.svg'),
+          to: path.resolve(__dirname, 'dist/images'),
+        },
       ],
     }),
     new MiniCssExtractPlugin({

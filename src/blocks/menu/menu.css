@@ -4,6 +4,8 @@
 @import url(./__btn-icon/menu__btn-icon.css);
 @import url(./__link/_underline/_white/menu__link_underline_white.css);
 @import url(./__link/_underline/_black/menu__link_underline_black.css);
+@import url(./__link/_hidden/menu__link_hidden.css);
+@import url(./__btn-icon/_hidden/menu__btn-icon_hidden.css);
 
 .menu {
   padding-right: 104px;

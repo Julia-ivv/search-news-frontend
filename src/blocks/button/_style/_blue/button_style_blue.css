@@ -2,4 +2,6 @@
   background-color: #2f71e5;
   color: #fff;
   box-shadow: 0 5px 15px rgba(14, 26, 57, .2);
+  cursor: url('images/cursor-lapka.svg'), auto;
+  transition: background-color 2s;
 }

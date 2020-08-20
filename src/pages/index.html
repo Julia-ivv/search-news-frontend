@@ -14,10 +14,10 @@
         <p class="logo">NewsExplorer</p>
         <nav class="menu">
           <a href="./index.html" class="menu__link menu__link_underline_white">Главная</a>
-          <a href="./articles.html" class="menu__link">Сохранённые статьи</a>
+          <a href="./articles.html" class="menu__link menu__link_hidden" id="articles">Сохранённые статьи</a>
           <button class="menu__btn-login menu__btn-login_style_white">
-            <p class="menu__btn-caption">Грета</p>
-            <img src="<%=require('../images/logout-white.svg').default%>" alt="logout" class="menu__btn-icon">
+            <p class="menu__btn-caption">Авторизоваться</p>
+            <img src="<%=require('../images/logout-white.svg').default%>" alt="logout" class="menu__btn-icon menu__btn-icon_hidden">
           </button>
         </nav>
       </header>
@@ -43,7 +43,8 @@
             <p class="article__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
             <p class="article__source">Лента.ру</p>
           </div>
-          <button class="article__icon article__icon_type_bookmark"></button>
+          <button class="article__icon article__icon_type_bookmark" tooltip-text="Войдите, чтобы сохранять статьи"></button>
+
         </div>
         <div class="article">
           <img src="<%=require('../images/image_04.png').default%>" alt="Лесные огоньки" class="article__image">
@@ -53,7 +54,7 @@
             <p class="article__text">Фотограф отвлеклась от освещения суровой политической реальности Мексики, чтобы запечатлеть ускользающую красоту одного из местных чудес природы.</p>
             <p class="article__source">Медуза</p>
           </div>
-          <button class="article__icon article__icon_type_bookmark"></button>
+          <button class="article__icon article__icon_type_bookmark" tooltip-text="Войдите, чтобы сохранять статьи"></button>
         </div>
         <div class="article">
           <img src="<%=require('../images/image_07.png').default%>" alt="Первозданная тайга" class="article__image">
@@ -63,7 +64,7 @@
             <p class="article__text">Знаменитый фотограф снимает первозданные леса России, чтобы рассказать о необходимости их сохранения. В этот раз он отправился в Двинско-Пинежскую тайгу, где...</p>
             <p class="article__source">Риа</p>
           </div>
-          <button class="article__icon article__icon_type_bookmark"></button>
+          <button class="article__icon article__icon_type_bookmark" tooltip-text="Войдите, чтобы сохранять статьи"></button>
         </div>
         <div class="article">
           <img src="<%=require('../images/image_06.png').default%>" alt="Национальное достояние – парки" class="article__image">
@@ -73,7 +74,7 @@
             <p class="article__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
             <p class="article__source">Дзен</p>
           </div>
-          <button class="article__icon article__icon_type_bookmark"></button>
+          <button class="article__icon article__icon_type_bookmark" tooltip-text="Войдите, чтобы сохранять статьи"></button>
         </div>
       </div>
       <button class="button results__more-button">Показать еще</button>
@@ -91,7 +92,9 @@
     </section>
 
     <section class="author root__author">
-      <img src="<%=require('../images/avatar.png').default%>" alt="Аватар" class="author__image">
+      <picture>
+        <img src="<%=require('../images/avatar.png').default%>" alt="Аватар" class="author__image">
+      </picture>
       <div class="author__about">
         <h3 class="block-title author__block-title">Об авторе</h3>
         <p class="block-text block-text_style_dark author__block-text">Это блок с описанием автора проекта. Здесь следует указать, как вас зовут, чем вы занимаетесь, какими технологиями разработки владеете.</p>
@@ -131,16 +134,16 @@
           <label class="popup__input-title">Email
             <input type="text" name="email" pattern="(?!.*--)[a-zA-Z0-9][\-\.\w]*(?<!-)@[a-zA-Z0-9]+[\-\.\w]*(?<!-)\.[a-zA-Z]+$" autocomplete="off" required class="popup__input popup__input_type_email" placeholder="Введите почту">
           </label>
-          <span id="error-email" class="error-message error-message_type_input">Неправильный формат email</span>
+          <span id="error-email" class="error-message error-message_type_input error-message_visible">Неправильный формат email</span>
         </div>
         <div class="popup__input-container">
           <label class="popup__input-title">Пароль
             <input type="password" name="password" autocomplete="off" required class="popup__input popup__input_type_password" placeholder="Введите пароль">
           </label>
-          <span id="error-password" class="error-message error-message_type_input">Это обязательное поле</span>
+          <span id="error-password" class="error-message error-message_type_input error-message_visible">Это обязательное поле</span>
         </div>
         <div class="popup__input-container">
-          <span id="error-login" class="error-message error-message_type_button">Ошибка авторизации</span>
+          <span id="error-login" class="error-message error-message_type_button error-message_visible">Ошибка авторизации</span>
           <button type class="button popup__button button_style_gray">Войти</button>
         </div>
         <div class="popup__or">

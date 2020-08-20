@@ -10,4 +10,6 @@
   height: 48px; */
   display: inline-flex;
   padding: 0;
+  cursor: url('images/cursor-lapka.svg'), auto;
+  outline: none;
 }

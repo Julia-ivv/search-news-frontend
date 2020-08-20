@@ -10,10 +10,5 @@
   font-size: 12px;
   line-height: 15px;
   opacity: 0;
-  /* display: none; */
-  padding-top: 3px;
-}
-
-.popup__input:invalid:not(:placeholder-shown) + .error-message {
-	opacity: 1;
+  padding-top: 0px;
 }

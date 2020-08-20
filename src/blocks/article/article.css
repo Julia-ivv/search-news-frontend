@@ -13,4 +13,5 @@
   background-color: #fff;
   border-radius: 16px;
   position: relative;
+  cursor: url('images/cursor-lapka.svg'), auto;
 }

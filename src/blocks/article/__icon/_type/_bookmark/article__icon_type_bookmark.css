@@ -1,3 +1,15 @@
 .article__icon_type_bookmark {
+  transition: background-image 1s;
   background-image: url('images/bookmark-normal.svg');
+}
+
+.article__icon_type_bookmark:hover {
+  background-image: url('images/bookmark-hover.svg');
+}
+
+.article__icon_type_bookmark:hover::after {
+  font-size: 10px;
+  line-height: 12px;
+  padding: 16px 0 13px;
+  width: 182px;
 }
