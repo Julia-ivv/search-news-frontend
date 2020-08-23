@@ -5,3 +5,11 @@
   width: 24px;
   height: 24px;
 }
+
+@media (max-width: 768px) {
+  .menu__btn-icon {
+    margin: 8px 13px 8px 0;
+    width: 3.125vw;
+    height: 3.125vw;
+  }
+}

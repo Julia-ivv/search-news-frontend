@@ -1,5 +1,11 @@
 .root__results {
   /* margin: auto;
   margin-top: 80px; */
-  padding-top: 80px;
+  padding-top: 5.62%; /* 80px;*/
+}
+
+@media (max-width: 320px) {
+  .root__results {
+    padding-top: 32px;
+  }
 }

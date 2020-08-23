@@ -1,6 +1,22 @@
 .search__form {
-  margin-bottom: 80px;
-  margin-top: 64px;
-  width: 608px;
+  margin-bottom: 13.15%; /* 5.56%; /* 80px;*/
+  margin-top: 10.53%; /* 4.44%; /*64px;*/
+  /*width: 608px; /*42.22%;*/
+  width: 100%;
   position: relative;
+}
+
+@media (max-width: 768px) {
+  .search__form {
+    /* width: 58.33%; */
+    margin-top: 10.71%; /* 6.25%;*/
+    margin-bottom: 10.71%;
+  }
+}
+
+@media (max-width: 320px) {
+  .search__form {
+    margin-top: 122px;
+    margin-bottom: 32px;
+  }
 }

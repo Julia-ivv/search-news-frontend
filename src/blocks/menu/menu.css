@@ -8,12 +8,27 @@
 @import url(./__btn-icon/_hidden/menu__btn-icon_hidden.css);
 
 .menu {
-  padding-right: 104px;
-  padding-top: 19px;
-  padding-bottom: 13px;
+  padding-right: 7.22%; /* 104px; /*7.22%;*/
+  padding-top: 1.2vw; /*19px; /*1.32%;*/
+  padding-bottom: 0.7vw; /*12px; /*.9%;*/
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
+}
+
+@media (max-width: 768px) {
+  .menu {
+    font-size: 2.0833vw; /* 16px;*/
+    padding-right: 5.21%;
+    padding-top: 1.82%;
+    padding-bottom: 1.56%;
+  }
+}
+
+@media (max-width: 320px) {
+  .menu {
+    display: none;
+  }
 }

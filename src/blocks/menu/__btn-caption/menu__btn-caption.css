@@ -10,3 +10,12 @@
   font-size: 18px;
   line-height: 24px;
 }
+
+@media (max-width: 768px) {
+  .menu__btn-caption {
+    font-size: 2.0833vw; /* 16px;*/
+    line-height: 3.125vw;
+    margin: 8px 12px;
+    /* margin: ; */
+  }
+}

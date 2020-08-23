@@ -8,13 +8,17 @@ const signupForm = document.querySelector('#form-signup');
 const popupLogin = document.querySelector('#popup-login');
 const popupSignup = document.querySelector('#popup-signup');
 const popupSuccess = document.querySelector('#popup-success');
+const popupMenu = document.querySelector('.popup-menu');
 
 const authorizationButton = document.querySelector('.menu__btn-login');
+const authorizationPopupButton = document.querySelector('.popup-menu__btn-login');
 const closeButtons = document.querySelectorAll('.popup__close');
 const signupLink = loginForm.querySelector('.popup__or-button');
 const loginLink = signupForm.querySelector('.popup__or-button');
 const loginButton = loginForm.querySelector('.popup__button');
 const articlesGrid = document.querySelector('.articles');
+const closePopupMenu = document.querySelector('.popup-menu__close');
+const headerMenuOpenBtn = document.querySelector('.header__menu-open');
 
 const menu = document.querySelector('.menu');
 
@@ -23,19 +27,25 @@ const menu = document.querySelector('.menu');
 // Открытие попапа
 function popupOpen(popup) {
   popup.classList.add('popup_is-opened');
+  if (window.screen.availWidth <= 320) headerMenuOpenBtn.classList.add('header__menu-open_hidden');
 }
 
 // Закрытие попапа
 function popupClose(event) {
   event.target.closest('.popup').classList.remove('popup_is-opened');
+  if (window.screen.availWidth <= 320) headerMenuOpenBtn.classList.remove('header__menu-open_hidden');
 }
-
-authorizationButton.addEventListener('click', () => {
-  popupOpen(document.querySelector('#popup-login'));
-});
 
 /* Слушатели событий */
 
+authorizationButton.addEventListener('click', () => {
+  popupOpen(document.querySelector('#popup-login'));
+  headerMenuOpenBtn.classList.add('header__menu-open_hidden');
+});
+authorizationPopupButton.addEventListener('click', () => {
+  popupMenu.classList.add('popup-menu_hidden');
+  popupOpen(document.querySelector('#popup-login'));
+});
 closeButtons.forEach((el) => el.addEventListener('click', popupClose));
 loginForm.addEventListener('submit', (event) => event.preventDefault());
 signupForm.addEventListener('submit', (event) => event.preventDefault());
@@ -57,11 +67,32 @@ loginLink.addEventListener('click', (event) => {
 });
 loginButton.addEventListener('click', (event) => {
   popupClose(event);
-  menu.querySelector('#articles').classList.remove('menu__link_hidden');
-  menu.querySelector('.menu__btn-icon').classList.remove('menu__btn-icon_hidden');
-  menu.querySelector('.menu__btn-caption').textContent = 'Грета';
+  if (menu.querySelector('.menu__btn-caption').textContent === 'Авторизоваться') {
+    menu.querySelector('#articles').classList.remove('menu__link_hidden');
+    menu.querySelector('.menu__btn-icon').classList.remove('menu__btn-icon_hidden');
+    menu.querySelector('.menu__btn-caption').textContent = 'Грета';
+  } else {
+    menu.querySelector('#articles').classList.add('menu__link_hidden');
+    menu.querySelector('.menu__btn-icon').classList.add('menu__btn-icon_hidden');
+    menu.querySelector('.menu__btn-caption').textContent = 'Авторизоваться';
+  }
 });
 articlesGrid.addEventListener('click', (event) => {
   const currentIcon = event.target;
-  currentIcon.style.backgroundImage = 'url(images/bookmark-marked.svg)';
+  if (currentIcon.classList.contains('article__icon_type_bookmark')) currentIcon.style.backgroundImage = 'url(images/bookmark-marked.svg)';
+});
+closePopupMenu.addEventListener('click', () => {
+  popupMenu.classList.add('popup-menu_hidden');
+});
+headerMenuOpenBtn.addEventListener('click', () => {
+  popupMenu.classList.remove('popup-menu_hidden');
+});
+
+window.addEventListener('scroll', () => {
+  if (window.screen.availWidth <= 320) {
+    const headerElem = document.querySelector('.header_style_black');
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (scrollTop === 0) headerElem.style.backgroundColor = 'rgba(196, 196, 196, .01)';
+    else headerElem.style.backgroundColor = 'rgb(1, 24, 1)';
+  }
 });

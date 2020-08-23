@@ -4,8 +4,55 @@
   font-weight: bold;
   font-size: 20px;
   line-height: 24px;
-  margin-top: 30px;
-  margin-left: 104px;
-  margin-bottom: 26px;
+
+  margin-top: 2.1%; /*30px;*/
+  margin-left: 7.22%; /*104px;*/
+  margin-bottom: 1.81%; /*26px;*/
   /* color: #fff; */
+}
+
+@media (max-width: 1024px) {
+  .logo {
+    margin-top: 2.7%;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo {
+    margin-top: 3%;
+    margin-left: 5.21%;
+    margin-bottom: 2.34%;
+    font-size: 2.6042vw;
+    line-height: 3.125vw;
+  }
+}
+
+@media (max-width: 650px) {
+  .logo {
+    font-size: 3vw;
+    line-height: 4vw;
+  }
+}
+
+@media (max-width: 450px) {
+  .logo {
+    font-size: 3vw;
+    line-height: 4.5vw;
+  }
+}
+
+@media (max-width: 360px) {
+  .logo {
+    margin-top: 3.5%;
+  }
+}
+
+@media (max-width: 320px) {
+  .logo {
+    font-size: 5vw;
+    line-height: 7.5vw;
+    margin-top: 16px;
+    margin-left: 16px;
+    margin-bottom: 16px;
+  }
 }

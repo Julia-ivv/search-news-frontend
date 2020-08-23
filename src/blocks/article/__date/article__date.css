@@ -7,5 +7,20 @@
   color: #b6bcbf;
   /* margin: auto; */
   margin-bottom: 0;
-  margin-top: 20px;
+  margin-top: 5.8%; /* 20px;*/
+}
+
+@media (max-width: 768px) {
+  .article__date {
+    font-size: 2.3438vw;
+    line-height: 3.125vw;
+    margin-top: 8.8%;
+  }
+}
+
+@media (max-width: 320px) {
+  .article__date {
+    font-size: 18px;
+    line-height: 24px;
+  }
 }

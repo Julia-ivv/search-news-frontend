@@ -1,3 +1,9 @@
 .popup.popup_is-opened {
   display: flex;
 }
+
+@media (max-width: 320px) {
+  .popup.popup_is-opened {
+    z-index: 4;
+  }
+}

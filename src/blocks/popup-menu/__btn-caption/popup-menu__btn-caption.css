@@ -1,0 +1,10 @@
+.popup-menu__btn-caption {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  margin-top: 14px;
+  margin-bottom: 14px;
+  color: #fff;
+}

@@ -3,11 +3,8 @@
 
 .menu__btn-login {
   background-color: transparent;
-  /* border: 1px solid #fff; */
   box-sizing: border-box;
   border-radius: 100px;
-  /* width: 112px;
-  height: 48px; */
   display: inline-flex;
   padding: 0;
   cursor: url('images/cursor-lapka.svg'), auto;

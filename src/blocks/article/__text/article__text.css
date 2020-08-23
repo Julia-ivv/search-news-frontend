@@ -7,4 +7,35 @@
   margin: auto;
   /* margin-bottom: 18px; */
   margin-top: 16px;
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .article__text {
+    margin-top: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    min-height: 88px;
+
+    /* font-size: 2.0833vw;
+    line-height: 2.8646vw; */
+  }
+}
+
+@media (max-width: 600px) {
+  .article__text {
+    font-size: 2.5vw;
+    line-height: 3.2vw;
+    min-height: 11.134vw;
+  }
+}
+
+@media (max-width: 320px) {
+  .article__text {
+    font-size: 16px;
+    line-height: 22px;
+  }
 }

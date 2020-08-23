@@ -1,0 +1,5 @@
+@media (max-width: 320px) {
+  .footer__links-container_type_icon {
+    flex-direction: row;
+  }
+}

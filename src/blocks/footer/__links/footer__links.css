@@ -5,4 +5,11 @@
   margin-bottom: 30px; */
   display: flex;
   align-items: center;
+  /* width: 32%; */
+}
+
+@media (max-width: 320px) {
+  .footer__links {
+    align-items: baseline;
+  }
 }

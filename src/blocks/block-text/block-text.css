@@ -7,6 +7,22 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: normal;
+  /*font-size: 1.24vw; /*18px;*/
+  /*line-height: 1.67vw; /*24px;*/
   font-size: 18px;
   line-height: 24px;
+}
+
+@media (max-width: 768px) {
+  .block-text {
+    font-size: 2.3438vw;
+    line-height: 3.125vw;
+  }
+}
+
+@media (max-width: 320px) {
+  .block-text {
+    font-size: 18px;
+    line-height: 24px;
+  }
 }

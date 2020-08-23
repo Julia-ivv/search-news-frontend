@@ -25,3 +25,10 @@
   justify-content: center;
   display: none;
 }
+
+@media (max-width: 320px) {
+  .popup {
+    align-items: flex-start;
+    background-color: rgba(0, 0, 0, .1);;
+  }
+}

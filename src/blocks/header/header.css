@@ -1,8 +1,21 @@
 @import url(./_style/_black/header_style_black.css);
 @import url(./_style/_white/header_style_white.css);
 @import url(../menu/menu.css);
+/* @import url(./__menu-btn/header__menu-btn.css); */
+@import url(./__menu-open/header__menu-open.css);
+@import url(./__menu-open/_hidden/header__menu-open_hidden.css);
 
 .header {
   display: flex;
   justify-content: space-between;
+}
+
+@media (max-width: 320px) {
+  .header {
+    width: 100%;
+    margin: auto;
+    position: fixed;
+    z-index: 3;
+    top: 0;
+  }
 }
