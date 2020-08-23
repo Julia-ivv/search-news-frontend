@@ -19,6 +19,7 @@
           <img src="<%=require('../images/logout-black.svg').default%>" alt="logout" class="menu__btn-icon">
         </button>
       </nav>
+      <img src="<%=require('../images/icon-menu-white.svg').default%>" class="header__menu-open"></img>
     </header>
 
     <section class="articles-info">
@@ -56,7 +57,7 @@
           <div class="article__about">
             <p class="article__date">2 августа, 2019</p>
             <h4 class="article__title">«Первозданная тайга»: новый фотопроект Игоря Шпиленка</h4>
-            <p class="article__text">Знаменитый фотограф снимает первозданные леса России, чтобы рассказать о необходимости их сохранения. В этот раз он отправился в Двинско-Пинежскую тайгу, где...</p>
+            <p class="article__text">Знаменитый фотограф снимает первозданные леса России, чтобы рассказать о необходимости их сохранения. В этот раз он отправился в Двинско-Пинежскую тайгу, где</p>
             <p class="article__source">Риа</p>
           </div>
           <button class="article__icon article__icon_type_trash" tooltip-text="Убрать из сохранённых"></button>
@@ -90,25 +91,43 @@
     <footer class="footer">
       <p class="footer__copyright">&copy; 2020 Supersite, Powered by News API</p>
       <ul class="footer__links">
-        <li class="footer__link">
-          <a href="./index.html" class="footer__link footer__link_type_text">Главная</a>
-        </li>
-        <li class="footer__link">
-          <a href="https://praktikum.yandex.ru/" class="footer__link footer__link_type_text" target="blank">Яндекс.Практикум</a>
-        </li>
-        <li class="footer__link">
-          <a href="https://github.com/" class="footer__link footer__link_type_icon" target="blank">
-            <img src="<%=require('../images/github.svg').default%>" alt="иконка github" class="footer__icon">
-          </a>
-        </li>
-        <li class="footer__link">
-          <a href="https://www.facebook.com/" class="footer__link footer__link_type_icon" target="blank">
-            <img src="<%=require('../images/fb.svg').default%>" alt="иконка facebook" class="footer__icon"></a>
-          </a>
-        </li>
+        <div class="footer__links-container footer__links-container_type_text">
+          <li class="footer__link">
+            <a href="./index.html" class="footer__link footer__link_type_text">Главная</a>
+          </li>
+          <li class="footer__link">
+            <a href="https://praktikum.yandex.ru/" class="footer__link footer__link_type_text" target="blank">Яндекс.Практикум</a>
+          </li>
+        </div>
+        <div class="footer__links-container footer__links-container_type_icon"></div>
+          <li class="footer__link">
+            <a href="https://github.com/" class="footer__link footer__link_type_icon" target="blank">
+              <img src="<%=require('../images/github.svg').default%>" alt="иконка github" class="footer__icon">
+            </a>
+          </li>
+          <li class="footer__link">
+            <a href="https://www.facebook.com/" class="footer__link footer__link_type_icon" target="blank">
+              <img src="<%=require('../images/fb.svg').default%>" alt="иконка facebook" class="footer__icon"></a>
+            </a>
+          </li>
+        </div>
       </ul>
     </footer>
   </div>
+
+  <div class="popup-menu popup-menu_hidden">
+    <div class="popup-menu__drop-down-menu">
+      <header class="header header_style_black">
+        <p class="logo">NewsExplorer</p>
+        <img src="<%=require('../images/menu-close-black.svg').default%>" alt="close" class="popup-menu__close">
+      </header>
+      <nav class="popup-menu__content">
+        <a href="./index.html" class="popup-menu__link">Главная</a>
+        <a href="./articles.html" class="popup-menu__link" id="articles">Сохранённые статьи</a>
+      </nav>
+    </div>
+  </div>
+
   <script type="module" src="<%= htmlWebpackPlugin.files.js %>"></script>
 </body>
 </html>

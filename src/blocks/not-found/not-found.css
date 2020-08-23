@@ -1,9 +1,16 @@
 @import url(./__title/not-found__title.css);
 @import url(./__block-text/not-found__block-text.css);
 @import url(./__image/not-found__image.css);
+@import url(./_hidden/not-found_hidden.css);
 
 .not-found {
   /* padding-top: 86px;
   padding-bottom: 80px; */
   background-color: #f5f6f7;
+}
+
+@media (max-width: 320px) {
+  .not-found {
+    display: none;
+  }
 }

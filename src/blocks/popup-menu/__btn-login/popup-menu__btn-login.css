@@ -1,0 +1,12 @@
+.popup-menu__btn-login {
+  border: 1px solid #fff;
+  box-sizing: border-box;
+  border-radius: 100px;
+  background-color: transparent;
+  width: 90vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 20px;
+  margin-bottom: 24px;
+}

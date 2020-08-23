@@ -1,0 +1,11 @@
+.popup-menu__link {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 56px;
+  color: #fff;
+  text-decoration: none;
+  /* margin-top: 22px;
+  margin-bottom: 44px; */
+}

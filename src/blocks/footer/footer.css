@@ -3,11 +3,28 @@
 @import url(./__link/footer__link.css);
 @import url(./__link/_type/_icon/footer__link_type_icon.css);
 @import url(./__link/_type/_text/footer__link_type_text.css);
+@import url(./__links-container/footer__links-container.css);
+@import url(./__links-container/_type/_icon/footer__links-container_type_icon.css);
+@import url(./__links-container/_type/_text/footer__links-container_type_text.css);
 
 .footer {
   background-color: #fff;
-  width: 85.42%;
+  width: 87.42%;
   display: flex;
   justify-content: space-between;
   margin: auto;
+}
+
+@media (max-width: 1024px) {
+  .footer {
+    width: 92.5%;
+  }
+}
+
+@media (max-width: 320px) {
+  .footer {
+    /* width: 89.58%; */
+    flex-direction: column-reverse;
+    width: 95%;
+  }
 }

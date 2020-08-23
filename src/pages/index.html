@@ -20,6 +20,23 @@
             <img src="<%=require('../images/logout-white.svg').default%>" alt="logout" class="menu__btn-icon menu__btn-icon_hidden">
           </button>
         </nav>
+        <img src="<%=require('../images/icon-menu-black.svg').default%>" class="header__menu-open"></img>
+
+<!--
+        <nav class="wrapper">
+          <div class="content">
+            <nav class="menu-temp">
+              <img src="<%=require('../images/menu-close-black.svg').default%>" alt="close" class="">
+              <a href="./index.html" class="menu__link">Главная</a>
+              <a href="./articles.html" class="menu__link" id="articles">Сохранённые статьи</a>
+              <button class="menu__btn-login menu__btn-login_style_white">
+                <p class="menu__btn-caption">Авторизоваться</p>
+                <img src="<%=require('../images/logout-white.svg').default%>" alt="logout" class="menu__btn-icon menu__btn-icon_hidden">
+              </button>
+            </nav>
+          </div>
+          <img src="<%=require('../images/icon-menu-black.svg').default%>" class="header__menu-btn">
+        </nav> -->
       </header>
 
       <section class="search">
@@ -61,7 +78,7 @@
           <div class="article__about">
             <p class="article__date">2 августа, 2019</p>
             <h4 class="article__title">«Первозданная тайга»: новый фотопроект Игоря Шпиленка</h4>
-            <p class="article__text">Знаменитый фотограф снимает первозданные леса России, чтобы рассказать о необходимости их сохранения. В этот раз он отправился в Двинско-Пинежскую тайгу, где...</p>
+            <p class="article__text">Знаменитый фотограф снимает первозданные леса России, чтобы рассказать о необходимости их сохранения. В этот раз он отправился в Двинско-Пинежскую тайгу, где</p>
             <p class="article__source">Риа</p>
           </div>
           <button class="article__icon article__icon_type_bookmark" tooltip-text="Войдите, чтобы сохранять статьи"></button>
@@ -93,6 +110,8 @@
 
     <section class="author root__author">
       <picture>
+        <source srcset="<%=require('../images/avatar-320.png').default%>" media="(max-width: 320px)">
+        <source srcset="<%=require('../images/avatar-768.png').default%>" media="(max-width: 768px)">
         <img src="<%=require('../images/avatar.png').default%>" alt="Аватар" class="author__image">
       </picture>
       <div class="author__about">
@@ -105,24 +124,45 @@
     <footer class="footer">
       <p class="footer__copyright">&copy; 2020 Supersite, Powered by News API</p>
       <ul class="footer__links">
-        <li class="footer__link">
-          <a href="./index.html" class="footer__link footer__link_type_text">Главная</a>
-        </li>
-        <li class="footer__link">
-          <a href="https://praktikum.yandex.ru/" class="footer__link footer__link_type_text" target="blank">Яндекс.Практикум</a>
-        </li>
-        <li class="footer__link">
-          <a href="https://github.com/" class="footer__link footer__link_type_icon" target="blank">
-            <img src="<%=require('../images/github.svg').default%>" alt="иконка github" class="footer__icon">
-          </a>
-        </li>
-        <li class="footer__link">
-          <a href="https://www.facebook.com/" class="footer__link footer__link_type_icon" target="blank">
-            <img src="<%=require('../images/fb.svg').default%>" alt="иконка facebook" class="footer__icon"></a>
-          </a>
-        </li>
+        <div class="footer__links-container footer__links-container_type_text">
+          <li class="footer__link">
+            <a href="./index.html" class="footer__link footer__link_type_text">Главная</a>
+          </li>
+          <li class="footer__link">
+            <a href="https://praktikum.yandex.ru/" class="footer__link footer__link_type_text" target="blank">Яндекс.Практикум</a>
+          </li>
+        </div>
+        <div class="footer__links-container footer__links-container_type_icon">
+          <li class="footer__link">
+            <a href="https://github.com/" class="footer__link footer__link_type_icon" target="blank">
+              <img src="<%=require('../images/github.svg').default%>" alt="иконка github" class="footer__icon">
+            </a>
+          </li>
+          <li class="footer__link">
+            <a href="https://www.facebook.com/" class="footer__link footer__link_type_icon" target="blank">
+              <img src="<%=require('../images/fb.svg').default%>" alt="иконка facebook" class="footer__icon"></a>
+            </a>
+          </li>
+        </div>
       </ul>
     </footer>
+  </div>
+
+  <div class="popup-menu popup-menu_hidden">
+    <div class="popup-menu__drop-down-menu">
+      <header class="header header_style_black">
+        <p class="logo">NewsExplorer</p>
+        <img src="<%=require('../images/menu-close-black.svg').default%>" alt="close" class="popup-menu__close">
+      </header>
+      <nav class="popup-menu__content">
+        <a href="./index.html" class="popup-menu__link">Главная</a>
+        <a href="./articles.html" class="popup-menu__link" id="articles">Сохранённые статьи</a>
+        <button class="popup-menu__btn-login">
+          <p class="popup-menu__btn-caption">Авторизоваться</p>
+          <img src="<%=require('../images/logout-white.svg').default%>" alt="logout" class="popup-menu__btn-icon popup-menu__btn-icon_hidden">
+        </button>
+      </nav>
+    </div>
   </div>
 
   <div class="popup" id="popup-login">
@@ -132,13 +172,13 @@
       <form class="popup__form" name="form-login" id="form-login">
         <div class="popup__input-container">
           <label class="popup__input-title">Email
-            <input type="text" name="email" pattern="(?!.*--)[a-zA-Z0-9][\-\.\w]*(?<!-)@[a-zA-Z0-9]+[\-\.\w]*(?<!-)\.[a-zA-Z]+$" autocomplete="off" required class="popup__input popup__input_type_email" placeholder="Введите почту">
+            <input type="text" inputmode="email" name="email" pattern="(?!.*--)[a-zA-Z0-9][\-\.\w]*(?<!-)@[a-zA-Z0-9]+[\-\.\w]*(?<!-)\.[a-zA-Z]+$" autocomplete="off" required class="popup__input popup__input_type_email" placeholder="Введите почту">
           </label>
           <span id="error-email" class="error-message error-message_type_input error-message_visible">Неправильный формат email</span>
         </div>
         <div class="popup__input-container">
           <label class="popup__input-title">Пароль
-            <input type="password" name="password" autocomplete="off" required class="popup__input popup__input_type_password" placeholder="Введите пароль">
+            <input type="password" inputmode="text" name="password" autocomplete="off" required class="popup__input popup__input_type_password" placeholder="Введите пароль">
           </label>
           <span id="error-password" class="error-message error-message_type_input error-message_visible">Это обязательное поле</span>
         </div>
@@ -161,19 +201,19 @@
       <form class="popup__form" name="form-signup" id="form-signup">
         <div class="popup__input-container">
           <label class="popup__input-title">Email
-            <input type="text" name="email" pattern="(?!.*--)[a-zA-Z0-9][\-\.\w]*(?<!-)@[a-zA-Z0-9]+[\-\.\w]*(?<!-)\.[a-zA-Z]+$" autocomplete="off" required class="popup__input popup__input_type_email" placeholder="Введите почту">
+            <input type="text" inputmode="email" name="email" pattern="(?!.*--)[a-zA-Z0-9][\-\.\w]*(?<!-)@[a-zA-Z0-9]+[\-\.\w]*(?<!-)\.[a-zA-Z]+$" autocomplete="off" required class="popup__input popup__input_type_email" placeholder="Введите почту">
           </label>
           <span id="error-email" class="error-message error-message_type_input">Неправильный формат email</span>
         </div>
         <div class="popup__input-container">
           <label class="popup__input-title">Пароль
-            <input type="password" name="password" autocomplete="off" required class="popup__input popup__input_type_password" placeholder="Введите пароль">
+            <input type="password" inputmode="text" name="password" autocomplete="off" required class="popup__input popup__input_type_password" placeholder="Введите пароль">
           </label>
           <span id="error-password" class="error-message error-message_type_input">Это обязательное поле</span>
         </div>
         <div class="popup__input-container">
           <label class="popup__input-title">Имя
-            <input type="text" name="name" autocomplete="off" required minlength="2" maxlength="30" class="popup__input popup__input_type_name" placeholder="Введите свое имя">
+            <input type="text" inputmode="text" name="name" autocomplete="off" required minlength="2" maxlength="30" class="popup__input popup__input_type_name" placeholder="Введите свое имя">
           </label>
           <span id="error-name" class="error-message error-message_type_input">Длина от 2 до 30 символов</span>
         </div>
