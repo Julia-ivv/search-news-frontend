@@ -5,8 +5,8 @@
   font-size: 16px;
   line-height: 22px;
   color: #b6bcbf;
-  margin-top: 2.5%; /* 33px;*/
-  margin-bottom: 2.11%; /* 26px;*/
+  margin-top: 2.5%;
+  margin-bottom: 2.11%;
 }
 
 @media (max-width: 768px) {
@@ -19,7 +19,6 @@
 
 @media (max-width: 650px) {
   .footer__copyright {
-    /* line-height: 4.86vw; */
     font-size: 0.65em;
     padding-top: 1%;
   }

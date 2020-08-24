@@ -10,8 +10,8 @@
   margin-top: 0;
   margin-bottom: 0;
   position: absolute;
-  left: 6%; /* 24px;*/
-  bottom: 3%; /*7px;*/
+  left: 6%;
+  bottom: 3%;
 }
 
 @media (max-width: 1024px) {

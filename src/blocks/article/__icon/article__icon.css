@@ -5,21 +5,21 @@
   box-sizing: border-box;
   border-radius: 8px;
   position: absolute;
-  top: 4%; /* 24px;*/
-  right: 6%; /* 24px;*/
+  top: 4%;
+  right: 6%;
   cursor: url('images/cursor-lapka.svg'), auto;
   outline: none;
   background-position: center;
 }
 
 .article__icon:hover::after {
-  content: attr(tooltip-text);
+  content: attr(data-title);
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
   text-align: center;
-  font-size: .83vw; /* 12px;*/
-  line-height: .97vw; /* 14px;*/
+  font-size: .83vw;
+  line-height: .97vw;
 
   margin: 0;
   color: #000000;
@@ -42,7 +42,7 @@
 @media (max-width: 768px) {
   .article__icon {
     top: 1.57%;
-    right: 3.57%; /*8*/
+    right: 3.57%;
     width: 18.6%;
     height: 7.4%;
   }

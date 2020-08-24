@@ -5,7 +5,6 @@
   font-size: 16px;
   line-height: 22px;
   margin: auto;
-  /* margin-bottom: 18px; */
   margin-top: 16px;
   margin-bottom: 0;
 }
@@ -19,9 +18,6 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 4;
     min-height: 88px;
-
-    /* font-size: 2.0833vw;
-    line-height: 2.8646vw; */
   }
 }
 

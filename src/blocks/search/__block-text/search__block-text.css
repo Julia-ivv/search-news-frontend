@@ -1,10 +1,8 @@
 .search__block-text {
-/*  width: 587px;  /*40.76%;*/
-  margin-top: 5.26%; /* 2.1%; /*32px;*/
+  margin-top: 5.26%;
   margin-bottom: 0;
   margin-left: 0;
   width: 90%;
-  /* color: #fff; */
 }
 
 @media (max-width: 1024px) {
@@ -15,7 +13,6 @@
 
 @media (max-width: 768px) {
   .search__block-text {
-    /* width: 58.33%; */
     margin-top: 3.26%;
   }
 }

@@ -1,18 +1,12 @@
 .article__about {
-  /* margin: 20px 24px 24px; */
   width: 88%;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
-  /* align-items: flex-start; */
   margin: auto;
-  /*min-height: 304px; /*21.11vw*/
-  /* position: relative; */
 }
 
 @media (max-width: 768px) {
   .article__about {
     width: 85.71%;
-    /* min-height: 320px; */
   }
 }

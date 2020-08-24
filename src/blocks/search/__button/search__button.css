@@ -1,6 +1,6 @@
 .search__button {
-  width: 11.66vw; /*168px; /* 27.63%;*/
-  height: 7.3vh; /* 64px;*/
+  width: 11.66vw;
+  height: 7.3vh;
   position: absolute;
   right: 0;
   transition: background-color 2s;

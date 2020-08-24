@@ -67,14 +67,19 @@ loginLink.addEventListener('click', (event) => {
 });
 loginButton.addEventListener('click', (event) => {
   popupClose(event);
-  if (menu.querySelector('.menu__btn-caption').textContent === 'Авторизоваться') {
+  const loginBtn = menu.querySelector('.menu__btn-login');
+  if (loginBtn.textContent.trim() === 'Авторизоваться') {
     menu.querySelector('#articles').classList.remove('menu__link_hidden');
     menu.querySelector('.menu__btn-icon').classList.remove('menu__btn-icon_hidden');
-    menu.querySelector('.menu__btn-caption').textContent = 'Грета';
+    loginBtn.textContent = 'Грета';
+    const icon = new Image();
+    icon.src = '../images/logout-white.svg';
+    icon.classList.add('menu__btn-icon');
+    loginBtn.appendChild(icon);
   } else {
     menu.querySelector('#articles').classList.add('menu__link_hidden');
     menu.querySelector('.menu__btn-icon').classList.add('menu__btn-icon_hidden');
-    menu.querySelector('.menu__btn-caption').textContent = 'Авторизоваться';
+    loginBtn.textContent = 'Авторизоваться';
   }
 });
 articlesGrid.addEventListener('click', (event) => {

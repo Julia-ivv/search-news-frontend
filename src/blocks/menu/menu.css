@@ -1,6 +1,5 @@
 @import url(./__btn-login/menu__btn-login.css);
 @import url(./__link/menu__link.css);
-@import url(./__btn-caption/menu__btn-caption.css);
 @import url(./__btn-icon/menu__btn-icon.css);
 @import url(./__link/_underline/_white/menu__link_underline_white.css);
 @import url(./__link/_underline/_black/menu__link_underline_black.css);
@@ -8,9 +7,9 @@
 @import url(./__btn-icon/_hidden/menu__btn-icon_hidden.css);
 
 .menu {
-  padding-right: 7.22%; /* 104px; /*7.22%;*/
-  padding-top: 1.2vw; /*19px; /*1.32%;*/
-  padding-bottom: 0.7vw; /*12px; /*.9%;*/
+  padding-right: 7.22%;
+  padding-top: 1.2vw;
+  padding-bottom: 0.7vw;
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
@@ -20,7 +19,7 @@
 
 @media (max-width: 768px) {
   .menu {
-    font-size: 2.0833vw; /* 16px;*/
+    font-size: 2.0833vw;
     padding-right: 5.21%;
     padding-top: 1.82%;
     padding-bottom: 1.56%;

@@ -9,16 +9,12 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* align-items: center; */
-  /* width: 42.22%; */
   margin-left: 28.88%;
   margin-right: 28.88%;
-  /* margin: auto; */
 }
 
 @media (max-width: 1024px) {
   .search {
-    /* width: 58.86%; */
     margin-left: 24.83%;
     margin-right: 24.83%;
   }
@@ -26,7 +22,6 @@
 
 @media (max-width: 768px) {
   .search {
-    /* width: 58.86%; */
     margin-left: 20.83%;
     margin-right: 20.83%;
   }

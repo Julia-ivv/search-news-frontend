@@ -1,15 +1,13 @@
 .search__form {
-  margin-bottom: 13.15%; /* 5.56%; /* 80px;*/
-  margin-top: 10.53%; /* 4.44%; /*64px;*/
-  /*width: 608px; /*42.22%;*/
+  margin-bottom: 13.15%;
+  margin-top: 10.53%;
   width: 100%;
   position: relative;
 }
 
 @media (max-width: 768px) {
   .search__form {
-    /* width: 58.33%; */
-    margin-top: 10.71%; /* 6.25%;*/
+    margin-top: 10.71%;
     margin-bottom: 10.71%;
   }
 }

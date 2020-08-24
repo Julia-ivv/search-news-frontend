@@ -2,10 +2,10 @@
   font-family: 'Roboto Slab';
   font-style: normal;
   font-weight: normal;
-  font-size: 2.78vw;/* 40px;*/
-  line-height: 3.19vw; /* 46px;*/
-  /* margin: auto; */
+  font-size: 2.78vw;
+  line-height: 3.19vw;
 }
+
 @media (max-width: 1024px) {
   .block-title {
     font-size: 3.2vw;
@@ -15,8 +15,8 @@
 
 @media (max-width: 768px) {
   .block-title {
-    font-size: 3.9vw; /*30px;*/
-    line-height: 4.43vw; /*34*/
+    font-size: 3.9vw;
+    line-height: 4.43vw;
   }
 }
 
