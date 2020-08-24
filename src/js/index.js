@@ -73,7 +73,7 @@ loginButton.addEventListener('click', (event) => {
     menu.querySelector('.menu__btn-icon').classList.remove('menu__btn-icon_hidden');
     loginBtn.textContent = 'Грета';
     const icon = new Image();
-    icon.src = '../images/logout-white.svg';
+    icon.src = 'images/logout-white.svg';
     icon.classList.add('menu__btn-icon');
     loginBtn.appendChild(icon);
   } else {
