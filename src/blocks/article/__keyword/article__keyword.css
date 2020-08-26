@@ -1,5 +1,5 @@
 .article__keyword {
-  font-family: Roboto;
+  font-family: 'Roboto', Arial, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -27,9 +27,10 @@
   .article__keyword {
     top: 1.57%;
     left: 3.57%;
-    height: 4.4%;
+    height: 5.4%;
     font-size: 2.3vw;
     line-height: 3.1vw;
+    padding: 3.6% 5.4%;
   }
 }
 

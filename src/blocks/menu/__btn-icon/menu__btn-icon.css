@@ -1,11 +1,13 @@
 .menu__btn-icon {
   width: 24px;
   height: 24px;
+  margin-left: 10px;
 }
 
 @media (max-width: 768px) {
   .menu__btn-icon {
     width: 3.125vw;
     height: 3.125vw;
+    margin-left: 5px;
   }
 }

@@ -13,7 +13,7 @@
       <p class="logo">NewsExplorer</p>
       <nav class="menu">
         <a href="./index.html" class="menu__link menu__link_underline_white">Главная</a>
-        <a href="./articles.html" class="menu__link menu__link_hidden" id="articles">Сохранённые статьи</a>
+        <a href="./articles.html" class="menu__link menu__link_hidden" id="articles-menu">Сохранённые статьи</a>
         <button class="menu__btn-login menu__btn-login_style_white">Авторизоваться
           <img src="<%=require('../images/logout-white.svg').default%>" alt="logout" class="menu__btn-icon menu__btn-icon_hidden">
         </button>
@@ -24,8 +24,8 @@
     <section class="search">
       <h1 class="search__title">Что в мире творится?</h1>
       <h2 class="block-text block-text_style_white search__block-text">Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.</h2>
-      <form action="" class="search__form" name="search">
-        <input type="text" class="search__input" name="keyword" placeholder="Введите тему новости">
+      <form class="search__form" name="search">
+        <input type="text" class="search__input" name="keyword" placeholder="Введите тему новости" required>
         <button class="button search__button button_style_blue">Искать</button>
       </form>
     </section>
@@ -137,9 +137,8 @@
       </header>
       <nav class="popup-menu__content">
         <a href="./index.html" class="popup-menu__link">Главная</a>
-        <a href="./articles.html" class="popup-menu__link" id="articles">Сохранённые статьи</a>
-        <button class="popup-menu__btn-login">
-          <p class="popup-menu__btn-caption">Авторизоваться</p>
+        <a href="./articles.html" class="popup-menu__link" id="articles-popup-menu">Сохранённые статьи</a>
+        <button class="popup-menu__btn-login">Авторизоваться
           <img src="<%=require('../images/logout-white.svg').default%>" alt="logout" class="popup-menu__btn-icon popup-menu__btn-icon_hidden">
         </button>
       </nav>
@@ -155,17 +154,17 @@
           <label class="popup__input-title">Email
             <input type="text" inputmode="email" name="email" pattern="(?!.*--)[a-zA-Z0-9][\-\.\w]*(?<!-)@[a-zA-Z0-9]+[\-\.\w]*(?<!-)\.[a-zA-Z]+$" autocomplete="off" required class="popup__input popup__input_type_email" placeholder="Введите почту">
           </label>
-          <span id="error-email" class="error-message error-message_type_input error-message_visible">Неправильный формат email</span>
+          <span id="error-email-login" class="error-message error-message_type_input error-message_visible">Неправильный формат email</span>
         </div>
         <div class="popup__input-container">
           <label class="popup__input-title">Пароль
             <input type="password" inputmode="text" name="password" autocomplete="off" required class="popup__input popup__input_type_password" placeholder="Введите пароль">
           </label>
-          <span id="error-password" class="error-message error-message_type_input error-message_visible">Это обязательное поле</span>
+          <span id="error-password-login" class="error-message error-message_type_input error-message_visible">Это обязательное поле</span>
         </div>
         <div class="popup__input-container">
           <span id="error-login" class="error-message error-message_type_button error-message_visible">Ошибка авторизации</span>
-          <button type class="button popup__button button_style_gray">Войти</button>
+          <button type="submit" class="button popup__button button_style_gray">Войти</button>
         </div>
         <div class="popup__or">
           <p>или&nbsp;</p>
@@ -184,13 +183,13 @@
           <label class="popup__input-title">Email
             <input type="text" inputmode="email" name="email" pattern="(?!.*--)[a-zA-Z0-9][\-\.\w]*(?<!-)@[a-zA-Z0-9]+[\-\.\w]*(?<!-)\.[a-zA-Z]+$" autocomplete="off" required class="popup__input popup__input_type_email" placeholder="Введите почту">
           </label>
-          <span id="error-email" class="error-message error-message_type_input">Неправильный формат email</span>
+          <span id="error-email-signup" class="error-message error-message_type_input">Неправильный формат email</span>
         </div>
         <div class="popup__input-container">
           <label class="popup__input-title">Пароль
             <input type="password" inputmode="text" name="password" autocomplete="off" required class="popup__input popup__input_type_password" placeholder="Введите пароль">
           </label>
-          <span id="error-password" class="error-message error-message_type_input">Это обязательное поле</span>
+          <span id="error-password-signup" class="error-message error-message_type_input">Это обязательное поле</span>
         </div>
         <div class="popup__input-container">
           <label class="popup__input-title">Имя
@@ -199,8 +198,8 @@
           <span id="error-name" class="error-message error-message_type_input">Длина от 2 до 30 символов</span>
         </div>
         <div class="popup__input-container">
-          <span id="error-login" class="error-message error-message_type_button">Такой пользователь уже есть</span>
-          <button type class="button popup__button button_style_blue">Зарегистрироваться</button>
+          <span id="error-signup" class="error-message error-message_type_button">Такой пользователь уже есть</span>
+          <button type="submit" class="button popup__button button_style_blue">Зарегистрироваться</button>
         </div>
         <div class="popup__or">
           <p>или&nbsp;</p>

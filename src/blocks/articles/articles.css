@@ -11,7 +11,7 @@
 
 @media (max-width: 768px) {
   .articles {
-    padding-top: 4.65%;
+    padding-top: 3.65%;
     padding-bottom: 4.65%;
     grid-template-columns: repeat(auto-fill, 32%);
     width: 90%;

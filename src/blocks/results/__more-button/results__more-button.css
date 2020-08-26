@@ -7,7 +7,7 @@
   border: none;
   display: block;
   cursor: url('images/cursor-lapka.svg'), auto;
-  transition: opacity 2s;
+  transition: opacity .5s;
 }
 
 .results__more-button:hover {

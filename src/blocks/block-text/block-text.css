@@ -4,7 +4,7 @@
 @import url(./_style/_gray/block-text_style_gray.css);
 
 .block-text {
-  font-family: 'Roboto';
+  font-family: 'Roboto', Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;

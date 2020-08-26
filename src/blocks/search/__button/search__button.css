@@ -1,9 +1,9 @@
 .search__button {
   width: 11.66vw;
-  height: 7.3vh;
+  height: 6.3vh;
   position: absolute;
   right: 0;
-  transition: background-color 2s;
+  transition: background-color .5s;
 }
 
 .search__button:hover {
@@ -23,12 +23,40 @@
 @media (max-width: 768px) {
   .search__button {
     width: 20.83vw;
+    height: 8.3vh;
+
+    font-size: 2.3438vw;
+    line-height: 3.125vw;
+  }
+}
+
+@media (max-width: 660px) {
+  .search__button {
+    height: 7.7vh;
   }
 }
 
 @media (max-width: 600px) {
   .search__button {
-    height: 5.9vh;
+    height: 6.9vh;
+  }
+}
+
+@media (max-width: 550px) {
+  .search__button {
+    height: 6vh;
+  }
+}
+
+@media (max-width: 450px) {
+  .search__button {
+    height: 5.1vh;
+  }
+}
+
+@media (max-width: 400px) {
+  .search__button {
+    height: 4.5vh;
   }
 }
 
@@ -38,5 +66,8 @@
     margin-top: 16px;
     width: 100%;
     height: 56px;
+
+    font-size: 18px;
+    line-height: 24px;
   }
 }

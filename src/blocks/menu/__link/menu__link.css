@@ -15,12 +15,12 @@
 
 @media (max-width: 768px) {
   .menu__link {
-    padding-bottom: 3.7vw;
+    padding-bottom: 3vw;
   }
 }
 
-@media (max-width: 470px) {
+@media (max-width: 480px) {
   .menu__link {
-    padding-bottom: 4.5vw;
+    padding-bottom: 3.2vw;
   }
 }

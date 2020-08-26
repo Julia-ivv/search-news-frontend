@@ -8,7 +8,7 @@
   display: inline-flex;
   padding: 12px 15px;
   cursor: url('images/cursor-lapka.svg'), auto;
-  font-family: 'Roboto';
+  font-family: 'Roboto', Arial, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -19,5 +19,6 @@
   .menu__btn-login {
     font-size: 2.0833vw;
     line-height: 3.125vw;
+    padding: 8px 12px;
   }
 }
