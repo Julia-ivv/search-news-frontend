@@ -9,7 +9,7 @@
 </head>
 <body class="root">
   <div class="main-picture">
-    <header class="header header_style_black">
+    <!-- <header class="header header_style_black">
       <p class="logo">NewsExplorer</p>
       <nav class="menu">
         <a href="./index.html" class="menu__link menu__link_underline_white">Главная</a>
@@ -19,7 +19,21 @@
         </button>
       </nav>
       <img src="<%=require('../images/icon-menu-black.svg').default%>" alt="open menu" class="header__menu-open"></img>
-    </header>
+    </header> -->
+
+    <template id="header">
+      <header class="header">
+        <p class="logo">NewsExplorer</p>
+        <nav class="menu">
+          <a href="./index.html" class="menu__link" id="main-menu">Главная</a>
+          <a href="./articles.html" class="menu__link menu__link_hidden" id="articles-menu">Сохранённые статьи</a>
+          <button class="menu__btn-login">
+            <img src="<%=require('../images/logout-white.svg').default%>" alt="logout" class="menu__btn-icon menu__btn-icon_hidden">
+          </button>
+        </nav>
+        <img src="<%=require('../images/icon-menu-black.svg').default%>" alt="open menu" class="header__menu-open"></img>
+      </header>
+    </template>
 
     <section class="search">
       <h1 class="search__title">Что в мире творится?</h1>

@@ -8,16 +8,31 @@
   <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.css %>">
 </head>
 <body class="root">
-  <header class="header header_style_white">
+  <!-- <header class="header header_style_white">
     <p class="logo">NewsExplorer</p>
     <nav class="menu">
       <a href="./index.html" class="menu__link">Главная</a>
-      <a href="./articles.html" class="menu__link menu__link_underline_black">Сохранённые статьи</a>
-      <button class="menu__btn-login">Грета<img src="<%=require('../images/logout-black.svg').default%>" alt="logout" class="menu__btn-icon">
+      <a href="./articles.html" class="menu__link" id="articles-menu">Сохранённые статьи</a>
+      <button class="menu__btn-login">Грета
+        <img src="<%=require('../images/logout-black.svg').default%>" alt="logout" class="menu__btn-icon">
       </button>
     </nav>
     <img src="<%=require('../images/icon-menu-white.svg').default%>" class="header__menu-open" alt="open menu"></img>
-  </header>
+  </header> -->
+
+  <template id="header">
+    <header class="header">
+      <p class="logo">NewsExplorer</p>
+      <nav class="menu">
+        <a href="./index.html" class="menu__link" id="main-menu">Главная</a>
+        <a href="./articles.html" class="menu__link" id="articles-menu">Сохранённые статьи</a>
+        <button class="menu__btn-login">Грета
+          <img src="<%=require('../images/logout-black.svg').default%>" alt="logout" class="menu__btn-icon">
+        </button>
+      </nav>
+      <img src="<%=require('../images/icon-menu-white.svg').default%>" class="header__menu-open" alt="open menu"></img>
+    </header>
+  </template>
 
   <section class="articles-info">
     <h3 class="block-text block-text_style_dark-opacity">Сохранённые статьи</h3>

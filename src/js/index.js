@@ -1,5 +1,7 @@
 import '../css/styles.css';
 
+import Header from './components/Header';
+
 /* Переменные */
 
 const loginForm = document.querySelector('#form-login');
@@ -22,6 +24,22 @@ const headerMenuOpenBtn = document.querySelector('.header__menu-open');
 
 const menu = document.querySelector('.menu');
 
+const HeaderClass = new Header({
+  headerTemplate: document.querySelector('#header'),
+  parentElement: document.querySelector('.main-picture'),
+  beforeElement: document.querySelector('.search'),
+  headerColor: 'black',
+});
+
+// HeaderClass.render({
+//   isLoggedIn: false,
+//   userName: '',
+// });
+HeaderClass.render({
+  isLoggedIn: true,
+  userName: 'User',
+});
+
 /* Функции */
 
 // Открытие попапа
@@ -38,10 +56,10 @@ function popupClose(event) {
 
 /* Слушатели событий */
 
-authorizationButton.addEventListener('click', () => { // клик по кнопке Аторизоваться
-  popupOpen(document.querySelector('#popup-login'));
-  headerMenuOpenBtn.classList.add('header__menu-open_hidden');
-});
+// authorizationButton.addEventListener('click', () => { // клик по кнопке Аторизоваться
+//   popupOpen(document.querySelector('#popup-login'));
+//   headerMenuOpenBtn.classList.add('header__menu-open_hidden');
+// });
 authorizationPopupButton.addEventListener('click', () => { // клик по кнопке Авторизоваться в попапе
   popupMenu.classList.add('popup-menu_hidden');
   popupOpen(document.querySelector('#popup-login'));
@@ -88,9 +106,9 @@ articlesGrid.addEventListener('click', (event) => {
 closePopupMenu.addEventListener('click', () => {
   popupMenu.classList.add('popup-menu_hidden');
 });
-headerMenuOpenBtn.addEventListener('click', () => {
-  popupMenu.classList.remove('popup-menu_hidden');
-});
+// headerMenuOpenBtn.addEventListener('click', () => {
+//   popupMenu.classList.remove('popup-menu_hidden');
+// });
 
 window.addEventListener('scroll', () => {
   if (window.screen.availWidth <= 320) {
