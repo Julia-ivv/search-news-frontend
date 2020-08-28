@@ -38,34 +38,34 @@ function popupClose(event) {
 
 /* Слушатели событий */
 
-authorizationButton.addEventListener('click', () => {
+authorizationButton.addEventListener('click', () => { // клик по кнопке Аторизоваться
   popupOpen(document.querySelector('#popup-login'));
   headerMenuOpenBtn.classList.add('header__menu-open_hidden');
 });
-authorizationPopupButton.addEventListener('click', () => {
+authorizationPopupButton.addEventListener('click', () => { // клик по кнопке Авторизоваться в попапе
   popupMenu.classList.add('popup-menu_hidden');
   popupOpen(document.querySelector('#popup-login'));
 });
 closeButtons.forEach((el) => el.addEventListener('click', popupClose));
 loginForm.addEventListener('submit', (event) => event.preventDefault());
 signupForm.addEventListener('submit', (event) => event.preventDefault());
-signupForm.querySelector('.popup__button').addEventListener('click', (event) => {
+signupForm.querySelector('.popup__button').addEventListener('click', (event) => { // Зарегистрироваться
   popupClose(event);
   popupOpen(popupSuccess);
 });
-popupSuccess.querySelector('.popup__login-button').addEventListener('click', (event) => {
+popupSuccess.querySelector('.popup__login-button').addEventListener('click', (event) => { // кнопка Войти при успешной регистрации
   popupClose(event);
   popupOpen(popupLogin);
 });
-signupLink.addEventListener('click', (event) => {
+signupLink.addEventListener('click', (event) => { // ссылка Зарегистрироваться
   popupClose(event);
   popupOpen(popupSignup);
 });
-loginLink.addEventListener('click', (event) => {
+loginLink.addEventListener('click', (event) => { // ссылка Войти
   popupClose(event);
   popupOpen(popupLogin);
 });
-loginButton.addEventListener('click', (event) => {
+loginButton.addEventListener('click', (event) => { //кнопка Авторизоваться
   popupClose(event);
   const loginBtn = menu.querySelector('.menu__btn-login');
   if (loginBtn.textContent.trim() === 'Авторизоваться') {
