@@ -1,6 +1,9 @@
 import '../css/styles.css';
 
+import Header from './components/Header';
+
 /* Переменные */
+const isMobile = window.screen.availWidth <= 320;
 
 const loginForm = document.querySelector('#form-login');
 const signupForm = document.querySelector('#form-signup');
@@ -22,6 +25,47 @@ const headerMenuOpenBtn = document.querySelector('.header__menu-open');
 
 const menu = document.querySelector('.menu');
 
+// let isLoggedIn = !!localStorage.getItem(isLoggedIn);
+// let userName = localStorage.getItem(userName) || '';
+
+// const authorizationListener = isLoggedIn
+//   ? () => logout()
+//   : () => popupOpen(document.querySelector('#popup-login'));
+// const popupMenuOpenListener = () => document.querySelector('.popup-menu').classList.remove('popup-menu_hidden');
+// const popupMenuCloseListener = () => document.querySelector('.popup-menu').classList.add('popup-menu_hidden');
+
+const HeaderClass = new Header({
+  // headerTemplate: document.querySelector('#header'),
+  // parentElement: document.querySelector('.main-picture'),
+  // beforeElement: document.querySelector('.search'),
+  headerColor: 'black',
+  // eventListeners: [
+    // {
+    //   event: 'click',
+    //   elementClass: '.menu__btn-login',
+    //   listener: authorizationListener,
+    // },
+  //   {
+  //     event: 'click',
+  //     elementClass: '.popup-menu__btn-login',
+  //     listener: authorizationListener,
+  //   },
+  //   {
+  //     event: 'click',
+  //     elementClass: '.header__menu-open',
+  //     listener: popupMenuOpenListener,
+  //   },
+  //   {
+  //     event: 'click',
+  //     elementClass: '.popup-menu__close',
+  //     listener: popupMenuCloseListener,
+  //   },
+  // ],
+  headerElement: document.querySelector('.header'),
+});
+
+HeaderClass.render({ isLoggedIn: localStorage.getItem('news'), userName: localStorage.getItem('userName') });
+
 /* Функции */
 
 // Открытие попапа
@@ -36,16 +80,34 @@ function popupClose(event) {
   if (window.screen.availWidth <= 320) headerMenuOpenBtn.classList.remove('header__menu-open_hidden');
 }
 
+// Выйти из личного кабинета
+function logout() {
+  localStorage.removeItem('news');
+  localStorage.removeItem('userName');
+  HeaderClass.render({ isLoggedIn: false, userName: '' });
+}
+
+function login() {
+  popupOpen(document.querySelector('#popup-login'));
+  headerMenuOpenBtn.classList.add('header__menu-open_hidden');
+}
+
+function loginLogout() {
+  if (!localStorage.getItem('news')) login()
+  else logout();
+}
+
 /* Слушатели событий */
 
 authorizationButton.addEventListener('click', () => { // клик по кнопке Аторизоваться
-  popupOpen(document.querySelector('#popup-login'));
-  headerMenuOpenBtn.classList.add('header__menu-open_hidden');
+  loginLogout();
 });
+
 authorizationPopupButton.addEventListener('click', () => { // клик по кнопке Авторизоваться в попапе
   popupMenu.classList.add('popup-menu_hidden');
-  popupOpen(document.querySelector('#popup-login'));
+  loginLogout();
 });
+
 closeButtons.forEach((el) => el.addEventListener('click', popupClose));
 loginForm.addEventListener('submit', (event) => event.preventDefault());
 signupForm.addEventListener('submit', (event) => event.preventDefault());
@@ -65,21 +127,24 @@ loginLink.addEventListener('click', (event) => { // ссылка Войти
   popupClose(event);
   popupOpen(popupLogin);
 });
-loginButton.addEventListener('click', (event) => { //кнопка Авторизоваться
+loginButton.addEventListener('click', (event) => { //кнопка Войти
   popupClose(event);
-  const loginBtn = menu.querySelector('.menu__btn-login');
-  if (loginBtn.textContent.trim() === 'Авторизоваться') {
-    menu.querySelector('#articles-menu').classList.remove('menu__link_hidden');
-    loginBtn.textContent = 'Грета';
-    const icon = new Image();
-    icon.src = 'images/logout-white.svg';
-    icon.classList.add('menu__btn-icon');
-    loginBtn.appendChild(icon);
-  } else {
-    menu.querySelector('#articles-menu').classList.add('menu__link_hidden');
-    menu.querySelector('.menu__btn-icon').classList.add('menu__btn-icon_hidden');
-    loginBtn.textContent = 'Авторизоваться';
-  }
+  // const loginBtn = menu.querySelector('.menu__btn-login');
+  // if (loginBtn.textContent.trim() === 'Авторизоваться') {
+  //   menu.querySelector('#articles-menu').classList.remove('menu__link_hidden');
+  //   loginBtn.textContent = 'Грета';
+  //   const icon = new Image();
+  //   icon.src = 'images/logout-white.svg';
+  //   icon.classList.add('menu__btn-icon');
+  //   loginBtn.appendChild(icon);
+  // } else {
+  //   menu.querySelector('#articles-menu').classList.add('menu__link_hidden');
+  //   menu.querySelector('.menu__btn-icon').classList.add('menu__btn-icon_hidden');
+  //   loginBtn.textContent = 'Авторизоваться';
+  // }
+  localStorage.setItem('news', 'JWT');
+  localStorage.setItem('userName', 'Name');
+  HeaderClass.render({ isLoggedIn: true, userName: 'Name' });
 });
 articlesGrid.addEventListener('click', (event) => {
   const currentIcon = event.target;

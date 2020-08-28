@@ -9,17 +9,49 @@
 </head>
 <body class="root">
   <div class="main-picture">
-    <header class="header header_style_black">
-      <p class="logo">NewsExplorer</p>
-      <nav class="menu">
-        <a href="./index.html" class="menu__link menu__link_underline_white">Главная</a>
-        <a href="./articles.html" class="menu__link menu__link_hidden" id="articles-menu">Сохранённые статьи</a>
-        <button class="menu__btn-login menu__btn-login_style_white">Авторизоваться
-          <img src="<%=require('../images/logout-white.svg').default%>" alt="logout" class="menu__btn-icon menu__btn-icon_hidden">
-        </button>
-      </nav>
-      <img src="<%=require('../images/icon-menu-black.svg').default%>" alt="open menu" class="header__menu-open"></img>
-    </header>
+    <!-- <template id="header"> -->
+      <header class="header header_style_black">
+        <p class="logo">NewsExplorer</p>
+        <nav class="menu">
+          <a href="./index.html" class="menu__link menu__link_underline_white">Главная</a>
+          <a href="./articles.html" class="menu__link menu__link_hidden" id="articles-menu">Сохранённые статьи</a>
+          <button class="menu__btn-login menu__btn-login_style_white">Авторизоваться
+            <img src="<%=require('../images/logout-white.svg').default%>" alt="logout" class="menu__btn-icon menu__btn-icon_hidden">
+          </button>
+        </nav>
+        <img src="<%=require('../images/icon-menu-black.svg').default%>" alt="open menu" class="header__menu-open"></img>
+
+        <div class="popup-menu popup-menu_hidden">
+          <div class="popup-menu__drop-down-menu">
+            <header class="header header_style_black">
+              <p class="logo">NewsExplorer</p>
+              <img src="<%=require('../images/menu-close-black.svg').default%>" alt="close" class="popup-menu__close">
+            </header>
+            <nav class="popup-menu__content">
+              <a href="./index.html" class="popup-menu__link">Главная</a>
+              <a href="./articles.html" class="popup-menu__link popup-menu__link_hidden" id="articles-popup-menu">Сохранённые статьи</a>
+              <button class="popup-menu__btn-login">Авторизоваться
+                <img src="<%=require('../images/logout-white.svg').default%>" alt="logout" class="popup-menu__btn-icon popup-menu__btn-icon_hidden">
+              </button>
+            </nav>
+          </div>
+        </div>
+      </header>
+    <!-- </template> -->
+
+    <!-- <template id="header">
+      <header class="header">
+        <p class="logo">NewsExplorer</p>
+        <nav class="menu">
+          <a href="./index.html" class="menu__link" id="main-menu">Главная</a>
+          <a href="./articles.html" class="menu__link menu__link_hidden" id="articles-menu">Сохранённые статьи</a>
+          <button class="menu__btn-login">
+            <img src="<%=require('../images/logout-white.svg').default%>" alt="logout" class="menu__btn-icon menu__btn-icon_hidden">
+          </button>
+        </nav>
+        <img src="<%=require('../images/icon-menu-black.svg').default%>" alt="open menu" class="header__menu-open"></img>
+      </header>
+    </template> -->
 
     <section class="search">
       <h1 class="search__title">Что в мире творится?</h1>
@@ -128,22 +160,6 @@
       </ul>
     </nav>
   </footer>
-
-  <div class="popup-menu popup-menu_hidden">
-    <div class="popup-menu__drop-down-menu">
-      <header class="header header_style_black">
-        <p class="logo">NewsExplorer</p>
-        <img src="<%=require('../images/menu-close-black.svg').default%>" alt="close" class="popup-menu__close">
-      </header>
-      <nav class="popup-menu__content">
-        <a href="./index.html" class="popup-menu__link">Главная</a>
-        <a href="./articles.html" class="popup-menu__link" id="articles-popup-menu">Сохранённые статьи</a>
-        <button class="popup-menu__btn-login">Авторизоваться
-          <img src="<%=require('../images/logout-white.svg').default%>" alt="logout" class="popup-menu__btn-icon popup-menu__btn-icon_hidden">
-        </button>
-      </nav>
-    </div>
-  </div>
 
   <div class="popup" id="popup-login">
     <div class="popup__content">
