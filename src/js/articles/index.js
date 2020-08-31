@@ -46,17 +46,17 @@ const HeaderClass = new Header({
   headerElement: document.querySelector('.header'),
 });
 
-function firstRender() {
-  if (!localStorage.getItem('news')) document.location.href = './index.html'
-  else HeaderClass.render({ isLoggedIn: localStorage.getItem('news'), userName: localStorage.getItem('userName') });
-}
-
 /* Функции */
 
 // Закрытие попапа
 // function popupClose(event) {
 //   event.target.closest('.popup').classList.remove('popup_is-opened');
 // }
+
+function firstRender() {
+  if (!localStorage.getItem('news')) document.location.href = './index.html'
+  else HeaderClass.render({ isLoggedIn: localStorage.getItem('news'), userName: localStorage.getItem('userName') });
+}
 
 // Выйти из личного кабинета
 function logout() {
@@ -65,7 +65,7 @@ function logout() {
   document.location.href = './index.html';
   localStorage.removeItem('news');
   localStorage.removeItem('userName');
-  HeaderClass.render({ isLoggedIn: false, userName: '' });
+  //HeaderClass.render({ isLoggedIn: false, userName: '' });
 }
 
 /* Слушатели событий */

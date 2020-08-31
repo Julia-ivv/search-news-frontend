@@ -1,6 +1,7 @@
 import '../css/styles.css';
 
 import Header from './components/Header';
+import Popup from './components/Popup';
 
 /* Переменные */
 const isMobile = window.screen.availWidth <= 320;
@@ -8,19 +9,23 @@ const isMobile = window.screen.availWidth <= 320;
 const loginForm = document.querySelector('#form-login');
 const signupForm = document.querySelector('#form-signup');
 
-const popupLogin = document.querySelector('#popup-login');
+const popupSignin = document.querySelector('#popup-login');
 const popupSignup = document.querySelector('#popup-signup');
 const popupSuccess = document.querySelector('#popup-success');
 const popupMenu = document.querySelector('.popup-menu');
 
+const closeSigninButton = popupSignin.querySelector('.popup__close');
+const closeSignupButton = popupSignup.querySelector('.popup__close');
+const closeSuccessButton = popupSuccess.querySelector('.popup__close');
+const closePopupMenu = document.querySelector('.popup-menu__close');
+
 const authorizationButton = document.querySelector('.menu__btn-login');
 const authorizationPopupButton = document.querySelector('.popup-menu__btn-login');
-const closeButtons = document.querySelectorAll('.popup__close');
+// const closeButtons = document.querySelectorAll('.popup__close');
 const signupLink = loginForm.querySelector('.popup__or-button');
 const loginLink = signupForm.querySelector('.popup__or-button');
 const loginButton = loginForm.querySelector('.popup__button');
 const articlesGrid = document.querySelector('.articles');
-const closePopupMenu = document.querySelector('.popup-menu__close');
 const headerMenuOpenBtn = document.querySelector('.header__menu-open');
 
 const menu = document.querySelector('.menu');
@@ -63,21 +68,34 @@ const HeaderClass = new Header({
   // ],
   headerElement: document.querySelector('.header'),
 });
+const popupSigninClass = new Popup({ popup: popupSignin });
+const popupSignupClass = new Popup({ popup: popupSignup });
+const popupSuccessClass = new Popup({ popup: popupSuccess });
 
 HeaderClass.render({ isLoggedIn: localStorage.getItem('news'), userName: localStorage.getItem('userName') });
 
 /* Функции */
 
 // Открытие попапа
-function popupOpen(popup) {
-  popup.classList.add('popup_is-opened');
-  if (window.screen.availWidth <= 320) headerMenuOpenBtn.classList.add('header__menu-open_hidden');
-}
+// function popupOpen(popup) {
+//   popup.classList.add('popup_is-opened');
+//   if (window.screen.availWidth <= 320) headerMenuOpenBtn.classList.add('header__menu-open_hidden');
+// }
 
 // Закрытие попапа
-function popupClose(event) {
-  event.target.closest('.popup').classList.remove('popup_is-opened');
-  if (window.screen.availWidth <= 320) headerMenuOpenBtn.classList.remove('header__menu-open_hidden');
+// function popupClose(event) {
+//   event.target.closest('.popup').classList.remove('popup_is-opened');
+//   if (window.screen.availWidth <= 320) headerMenuOpenBtn.classList.remove('header__menu-open_hidden');
+// }
+
+// показать кнупку меню для 320px
+function showMobileMenu() {
+  headerMenuOpenBtn.classList.remove('header__menu-open_hidden');
+};
+
+// скрыть кнопку меню для 320px
+function hideMobileMenu() {
+  headerMenuOpenBtn.classList.add('header__menu-open_hidden');
 }
 
 // Выйти из личного кабинета
@@ -85,71 +103,83 @@ function logout() {
   localStorage.removeItem('news');
   localStorage.removeItem('userName');
   HeaderClass.render({ isLoggedIn: false, userName: '' });
-}
+};
 
+// Авторизоваться
 function login() {
-  popupOpen(document.querySelector('#popup-login'));
-  headerMenuOpenBtn.classList.add('header__menu-open_hidden');
-}
+  // popupOpen(document.querySelector('#popup-login'));
+  popupSigninClass.open();
+  if (isMobile) hideMobileMenu();
+};
 
 function loginLogout() {
   if (!localStorage.getItem('news')) login()
   else logout();
-}
+};
 
 /* Слушатели событий */
 
-authorizationButton.addEventListener('click', () => { // клик по кнопке Аторизоваться
+authorizationButton.addEventListener('click', () => { // клик по кнопке Аторизоваться/выход
   loginLogout();
 });
-
-authorizationPopupButton.addEventListener('click', () => { // клик по кнопке Авторизоваться в попапе
+authorizationPopupButton.addEventListener('click', () => { // клик по кнопке Авторизоваться/выход на 320px
   popupMenu.classList.add('popup-menu_hidden');
   loginLogout();
 });
 
-closeButtons.forEach((el) => el.addEventListener('click', popupClose));
-loginForm.addEventListener('submit', (event) => event.preventDefault());
-signupForm.addEventListener('submit', (event) => event.preventDefault());
-signupForm.querySelector('.popup__button').addEventListener('click', (event) => { // Зарегистрироваться
-  popupClose(event);
-  popupOpen(popupSuccess);
-});
-popupSuccess.querySelector('.popup__login-button').addEventListener('click', (event) => { // кнопка Войти при успешной регистрации
-  popupClose(event);
-  popupOpen(popupLogin);
-});
-signupLink.addEventListener('click', (event) => { // ссылка Зарегистрироваться
-  popupClose(event);
-  popupOpen(popupSignup);
-});
-loginLink.addEventListener('click', (event) => { // ссылка Войти
-  popupClose(event);
-  popupOpen(popupLogin);
-});
-loginButton.addEventListener('click', (event) => { //кнопка Войти
-  popupClose(event);
-  // const loginBtn = menu.querySelector('.menu__btn-login');
-  // if (loginBtn.textContent.trim() === 'Авторизоваться') {
-  //   menu.querySelector('#articles-menu').classList.remove('menu__link_hidden');
-  //   loginBtn.textContent = 'Грета';
-  //   const icon = new Image();
-  //   icon.src = 'images/logout-white.svg';
-  //   icon.classList.add('menu__btn-icon');
-  //   loginBtn.appendChild(icon);
-  // } else {
-  //   menu.querySelector('#articles-menu').classList.add('menu__link_hidden');
-  //   menu.querySelector('.menu__btn-icon').classList.add('menu__btn-icon_hidden');
-  //   loginBtn.textContent = 'Авторизоваться';
-  // }
+// Попап Вход
+loginButton.addEventListener('click', () => { //кнопка Войти
+  // popupClose(event);
+  popupSigninClass.close();
   localStorage.setItem('news', 'JWT');
   localStorage.setItem('userName', 'Name');
   HeaderClass.render({ isLoggedIn: true, userName: 'Name' });
 });
+closeSigninButton.addEventListener('click', () => { // кнопка закрыть
+  popupSigninClass.close();
+  if (isMobile) showMobileMenu();
+});
+signupLink.addEventListener('click', () => { // ссылка Зарегистрироваться
+  // popupClose(event);
+  // popupOpen(popupSignup);
+  popupSigninClass.close();
+  // if (isMobile) showMobileMenu();
+  popupSignupClass.open();
+});
+
+// Попап Регистрация
+signupForm.querySelector('.popup__button').addEventListener('click', (event) => { // кнопка Зарегистрироваться
+  popupSignupClass.close();
+  popupSuccessClass.open();
+});
+closeSignupButton.addEventListener('click', () => {
+  popupSignupClass.close();
+  if (isMobile) showMobileMenu();
+});
+loginLink.addEventListener('click', (event) => { // ссылка Войти
+  popupSignupClass.close();
+  popupSigninClass.open();
+});
+
+// Попап успешной регистрации
+closeSuccessButton.addEventListener('click', () => {
+  popupSuccessClass.close();
+  if (isMobile) showMobileMenu();
+});
+popupSuccess.querySelector('.popup__login-button').addEventListener('click', (event) => { // кнопка Войти при успешной регистрации
+  popupSuccessClass.close();
+  popupSigninClass.open();
+});
+
+loginForm.addEventListener('submit', (event) => event.preventDefault());
+signupForm.addEventListener('submit', (event) => event.preventDefault());
+
 articlesGrid.addEventListener('click', (event) => {
   const currentIcon = event.target;
   if (currentIcon.classList.contains('article__icon_type_bookmark')) currentIcon.style.backgroundImage = 'url(images/bookmark-marked.svg)';
 });
+
+// Закрыть и открыть меню на 320px
 closePopupMenu.addEventListener('click', () => {
   popupMenu.classList.add('popup-menu_hidden');
 });
@@ -157,6 +187,7 @@ headerMenuOpenBtn.addEventListener('click', () => {
   popupMenu.classList.remove('popup-menu_hidden');
 });
 
+// Убрать прозрачный хедер при скроле на 320px
 window.addEventListener('scroll', () => {
   if (window.screen.availWidth <= 320) {
     const headerElem = document.querySelector('.header_style_black');
