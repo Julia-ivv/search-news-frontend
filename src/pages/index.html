@@ -161,11 +161,11 @@
     </nav>
   </footer>
 
-  <div class="popup" id="popup-login">
+  <div class="popup" id="popup-signin">
     <div class="popup__content">
       <button class="popup__close"></button>
       <h3 class="popup__title">Вход</h3>
-      <form class="popup__form" name="form-login" id="form-login">
+      <form class="popup__form" name="form-signin" id="form-signin">
         <div class="popup__input-container">
           <label class="popup__input-title">Email
             <input type="text" inputmode="email" name="email" pattern="(?!.*--)[a-zA-Z0-9][\-\.\w]*(?<!-)@[a-zA-Z0-9]+[\-\.\w]*(?<!-)\.[a-zA-Z]+$" autocomplete="off" required class="popup__input popup__input_type_email" placeholder="Введите почту">
@@ -181,12 +181,12 @@
         <div class="popup__input-container">
           <span id="error-login" class="error-message error-message_type_button error-message_visible">Ошибка авторизации</span>
           <button type="submit" class="button popup__button button_style_gray">Войти</button>
-        </div>
+        </div></form>
         <div class="popup__or">
           <p>или&nbsp;</p>
           <button type="button" class="popup__or-button">Зарегистрироваться</button>
         </div>
-      </form>
+
     </div>
   </div>
 
@@ -216,12 +216,12 @@
         <div class="popup__input-container">
           <span id="error-signup" class="error-message error-message_type_button">Такой пользователь уже есть</span>
           <button type="submit" class="button popup__button button_style_blue">Зарегистрироваться</button>
-        </div>
+        </div></form>
         <div class="popup__or">
           <p>или&nbsp;</p>
           <button type="button" class="popup__or-button">Войти</button>
         </div>
-      </form>
+
     </div>
   </div>
 
