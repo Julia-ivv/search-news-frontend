@@ -168,25 +168,25 @@
       <form class="popup__form" name="form-signin" id="form-signin">
         <div class="popup__input-container">
           <label class="popup__input-title">Email
-            <input type="text" inputmode="email" name="email" pattern="(?!.*--)[a-zA-Z0-9][\-\.\w]*(?<!-)@[a-zA-Z0-9]+[\-\.\w]*(?<!-)\.[a-zA-Z]+$" autocomplete="off" required class="popup__input popup__input_type_email" placeholder="Введите почту">
+            <input type="email" inputmode="email" name="email-signin" pattern="(?!.*--)[a-zA-Z0-9][\-\.\w]*(?<!-)@[a-zA-Z0-9]+[\-\.\w]*(?<!-)\.[a-zA-Z]+$" autocomplete="off" required class="popup__input popup__input_type_email" placeholder="Введите почту">
           </label>
-          <span id="error-email-login" class="error-message error-message_type_input error-message_visible">Неправильный формат email</span>
+          <span id="error-email-signin" class="error-message error-message_type_input"></span>
         </div>
         <div class="popup__input-container">
           <label class="popup__input-title">Пароль
-            <input type="password" inputmode="text" name="password" autocomplete="off" required class="popup__input popup__input_type_password" placeholder="Введите пароль">
+            <input type="password" inputmode="text" name="password-signin" autocomplete="off" required class="popup__input popup__input_type_password" placeholder="Введите пароль">
           </label>
-          <span id="error-password-login" class="error-message error-message_type_input error-message_visible">Это обязательное поле</span>
+          <span id="error-password-signin" class="error-message error-message_type_input"></span>
         </div>
         <div class="popup__input-container">
-          <span id="error-login" class="error-message error-message_type_button error-message_visible">Ошибка авторизации</span>
-          <button type="submit" class="button popup__button button_style_gray">Войти</button>
-        </div></form>
-        <div class="popup__or">
-          <p>или&nbsp;</p>
-          <button type="button" class="popup__or-button">Зарегистрироваться</button>
+          <span id="error-signin" class="error-message error-message_type_button"></span>
+          <button disabled type="submit" class="button popup__button button_style_gray">Войти</button>
         </div>
-
+      </form>
+      <div class="popup__or">
+        <p>или&nbsp;</p>
+        <button type="button" class="popup__or-button">Зарегистрироваться</button>
+      </div>
     </div>
   </div>
 
@@ -197,31 +197,31 @@
       <form class="popup__form" name="form-signup" id="form-signup">
         <div class="popup__input-container">
           <label class="popup__input-title">Email
-            <input type="text" inputmode="email" name="email" pattern="(?!.*--)[a-zA-Z0-9][\-\.\w]*(?<!-)@[a-zA-Z0-9]+[\-\.\w]*(?<!-)\.[a-zA-Z]+$" autocomplete="off" required class="popup__input popup__input_type_email" placeholder="Введите почту">
+            <input type="email" inputmode="email" name="email-signup" pattern="(?!.*--)[a-zA-Z0-9][\-\.\w]*(?<!-)@[a-zA-Z0-9]+[\-\.\w]*(?<!-)\.[a-zA-Z]+$" autocomplete="off" required class="popup__input popup__input_type_email" placeholder="Введите почту">
           </label>
-          <span id="error-email-signup" class="error-message error-message_type_input">Неправильный формат email</span>
+          <span id="error-email-signup" class="error-message error-message_type_input"></span>
         </div>
         <div class="popup__input-container">
           <label class="popup__input-title">Пароль
-            <input type="password" inputmode="text" name="password" autocomplete="off" required class="popup__input popup__input_type_password" placeholder="Введите пароль">
+            <input type="password" inputmode="text" name="password-signup" autocomplete="off" required class="popup__input popup__input_type_password" placeholder="Введите пароль">
           </label>
-          <span id="error-password-signup" class="error-message error-message_type_input">Это обязательное поле</span>
+          <span id="error-password-signup" class="error-message error-message_type_input"></span>
         </div>
         <div class="popup__input-container">
           <label class="popup__input-title">Имя
-            <input type="text" inputmode="text" name="name" autocomplete="off" required minlength="2" maxlength="30" class="popup__input popup__input_type_name" placeholder="Введите свое имя">
+            <input type="text" inputmode="text" name="name-signup" autocomplete="off" required minlength="2" maxlength="30" class="popup__input popup__input_type_name" placeholder="Введите свое имя">
           </label>
-          <span id="error-name" class="error-message error-message_type_input">Длина от 2 до 30 символов</span>
+          <span id="error-name-signup" class="error-message error-message_type_input"></span>
         </div>
         <div class="popup__input-container">
-          <span id="error-signup" class="error-message error-message_type_button">Такой пользователь уже есть</span>
-          <button type="submit" class="button popup__button button_style_blue">Зарегистрироваться</button>
-        </div></form>
-        <div class="popup__or">
-          <p>или&nbsp;</p>
-          <button type="button" class="popup__or-button">Войти</button>
+          <span id="error-signup" class="error-message error-message_type_button"></span>
+          <button disabled type="submit" class="button popup__button button_style_gray">Зарегистрироваться</button>
         </div>
-
+      </form>
+      <div class="popup__or">
+        <p>или&nbsp;</p>
+        <button type="button" class="popup__or-button">Войти</button>
+      </div>
     </div>
   </div>
 

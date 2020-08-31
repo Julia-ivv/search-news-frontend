@@ -2,6 +2,8 @@ import '../css/styles.css';
 
 import Header from './components/Header';
 import Popup from './components/Popup';
+import Form from './components/Form';
+import formValidationErrors from './constants/form-validation-errors';
 
 /* Переменные */
 const isMobile = window.screen.availWidth <= 320;
@@ -73,7 +75,8 @@ const popupSigninClass = new Popup({ popup: popupSignin });
 const popupSignupClass = new Popup({ popup: popupSignup });
 const popupSuccessClass = new Popup({ popup: popupSuccess });
 
-HeaderClass.render({ isLoggedIn: localStorage.getItem('news'), userName: localStorage.getItem('userName') });
+const signinFormClass = new Form({ formElement: signinForm, errorTexts: formValidationErrors });
+const signupFormClass = new Form({ formElement: signupForm, errorTexts: formValidationErrors });
 
 /* Функции */
 
@@ -131,34 +134,42 @@ authorizationPopupButton.addEventListener('click', () => { // клик по кн
 });
 
 // Попап Вход
-loginButton.addEventListener('click', () => { //кнопка Войти
+signinForm.addEventListener('submit', (event) => { //кнопка Войти
+  event.preventDefault();
   popupSigninClass.close();
   showMobileMenu();
   localStorage.setItem('news', 'JWT');
   localStorage.setItem('userName', 'Name');
+  signinFormClass.clearForm();
   HeaderClass.render({ isLoggedIn: true, userName: 'Name' });
 });
 closeSigninButton.addEventListener('click', () => { // кнопка закрыть
+  signinFormClass.clearForm();
   popupSigninClass.close();
   if (isMobile) showMobileMenu();
 });
 signupLink.addEventListener('click', () => { // ссылка Зарегистрироваться
+  signinFormClass.clearForm();
   popupSigninClass.close();
   popupSignupClass.open();
 });
 
 // Попап Регистрация
-signupForm.querySelector('.popup__button').addEventListener('click', (event) => { // кнопка Зарегистрироваться
+signupForm.addEventListener('submit', (event) => { // кнопка Зарегистрироваться
+  event.preventDefault();
+  signupFormClass.clearForm();
   popupSignupClass.close();
   popupSuccessClass.open();
 });
 closeSignupButton.addEventListener('click', () => {
   popupSignupClass.close();
+  signupFormClass.clearForm();
   if (isMobile) showMobileMenu();
 });
 signinLink.addEventListener('click', (event) => { // ссылка Войти
   popupSignupClass.close();
   popupSigninClass.open();
+  signupFormClass.clearForm();
 });
 
 // Попап успешной регистрации
@@ -171,8 +182,9 @@ popupSuccess.querySelector('.popup__login-button').addEventListener('click', (ev
   popupSigninClass.open();
 });
 
-signinForm.addEventListener('submit', (event) => event.preventDefault());
-signupForm.addEventListener('submit', (event) => event.preventDefault());
+// Валидация форм
+signinFormClass.setEventListeners();
+signupFormClass.setEventListeners();
 
 articlesGrid.addEventListener('click', (event) => {
   const currentIcon = event.target;
@@ -196,3 +208,7 @@ window.addEventListener('scroll', () => {
     else headerElem.style.backgroundColor = 'rgb(1, 24, 1)';
   }
 });
+
+/* Вызовы функций */
+
+HeaderClass.render({ isLoggedIn: localStorage.getItem('news'), userName: localStorage.getItem('userName') });
