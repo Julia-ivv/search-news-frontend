@@ -4,6 +4,10 @@ import Header from './components/Header';
 import Popup from './components/Popup';
 import Form from './components/Form';
 import formValidationErrors from './constants/form-validation-errors';
+import NewsCard from './components/NewsCard';
+import NewsCardList from './components/NewsCardList';
+import { CARDS_IN_LINE } from './constants/constants';
+import dateFormating from './utils/date-formating';
 
 /* Переменные */
 const isMobile = window.screen.availWidth <= 320;
@@ -212,3 +216,141 @@ window.addEventListener('scroll', () => {
 /* Вызовы функций */
 
 HeaderClass.render({ isLoggedIn: localStorage.getItem('news'), userName: localStorage.getItem('userName') });
+
+
+
+
+// function getCardList(cards, from, to) {
+//   console.log(from, to);
+//   if (cards.length < to) to = cards.length;
+//   if (cards.length > to) {
+//     const btnMore = document.querySelector('.results__more-button');
+//     btnMore.classList.remove('results__more-button_hidden');
+
+//     const moreButtonClick = function() {
+//       this.classList.add('results__more-button_hidden');
+//       newsCardListClass.renderResults(getCardList(cards, to, to + CARDS_IN_LINE));
+//       this.removeEventListener('click', moreButtonClick);
+//     };
+//     btnMore.addEventListener('click', moreButtonClick);
+//   };
+//   return cards.slice(from, to);
+// }
+
+const results = document.querySelector('.results');
+const resultsError = results.querySelector('.results__error');
+const notFound = document.querySelector('.not-found');
+const preloader = document.querySelector('.preloader');
+const searchInput = document.querySelector('.search__input');
+const articles = document.querySelector('.articles');
+const newsCardListClass = new NewsCardList({
+  initialCards: [],
+  template: document.querySelector('#article'),
+  container: articles,
+});
+
+function validateUrl(url) {
+  return /^https?:\/\/(www\.)?(((\d{1,3}\.){3}\d{1,3})|([А-ЯЁа-яё0-9][0-9А-ЯЁа-яё\-.]*\.[А-ЯЁа-яё]+|[a-zA-Z0-9][a-zA-Z0-9\-.]*\.[a-zA-Z]+))(:[1-9]\d{1,4})?(\/?[-0-9a-zA-Z&=?+%._]+)+\/?#?$/i.test(url);
+}
+
+function isCardCorrect(card) {
+  if (!!card.source.name && !!card.description && !!card.title && !!card.publishedAt && validateUrl(card.urlToImage) && validateUrl(card.url)) return true
+  else return false;
+}
+
+// const btnMore = document.querySelector('.results__more-button');
+// let moreButtonClick;
+
+function getCardList(allCards, from) {
+  let cardsLine = [];
+  let newFrom = allCards.length; //console.log('allCards', allCards);
+  allCards.slice(from).some((element, index) => {
+    if (isCardCorrect(element)) {
+      cardsLine.push(element);
+      if (cardsLine.length === CARDS_IN_LINE) {
+        newFrom = from + index + 1; //console.log('cardsLine', cardsLine);
+        return true;
+      };
+    };
+  });
+  if (allCards.length > newFrom && allCards.slice(newFrom).some((element) => { if (isCardCorrect(element)) return true })) {
+    const btnMore = document.querySelector('.results__more-button');
+    btnMore.classList.remove('results__more-button_hidden');
+
+    //const moreButtonClick = function() {
+    function moreButtonClick() {
+      this.classList.add('results__more-button_hidden');
+      newsCardListClass.renderResults(getCardList(allCards, newFrom), dateFormating);
+      this.removeEventListener('click', moreButtonClick);
+    };
+    btnMore.addEventListener('click', moreButtonClick);
+  };
+  return cardsLine;
+}
+
+function showResults() {
+  results.classList.remove('results_hidden');
+}
+
+function search() {
+  const apiKey = '241799af23a34a558b9d14503adfb474';
+
+  fetch(`https://newsapi.org/v2/everything?q=${searchInput.value}&apiKey=241799af23a34a558b9d14503adfb474&language=ru&from=2020-08-26&to=2020-09-02&pageSize=50`, {
+    method: 'GET',
+  })
+  .then((res) => {
+    return res.json();
+  })
+  .then((data) => {
+    if (data.articles.length > 0) {
+      // newsCardListClass.hideLoader(preloader);
+      let cards = getCardList(data.articles, 0);
+      if (cards.length > 0) {
+        newsCardListClass.renderResults(cards, dateFormating);
+        showResults();
+      } else {
+        newsCardListClass.renderNotFound(notFound);
+      }
+    } else {
+      newsCardListClass.renderNotFound(notFound);
+    };
+    newsCardListClass.hideLoader(preloader);
+  })
+  .catch((err) => {
+    console.log(err);
+    const btnMore = document.querySelector('.results__more-button');
+    newsCardListClass.removeShowMore(btnMore);
+    newsCardListClass.hideLoader(preloader);
+    newsCardListClass.renderError(resultsError, err);
+    showResults();
+  });
+};
+
+function removeResults() {
+  const btnMore = document.querySelector('.results__more-button');
+  // if (btnMore) btnMore.remove();
+  newsCardListClass.removeShowMore(btnMore);
+  while (articles.firstChild) {
+    articles.removeChild(articles.firstChild);
+  };
+  if (!results.classList.contains('results_hidden')) results.classList.add('results_hidden');
+  if (!resultsError.classList.contains('results__error_hidden')) resultsError.classList.add('results__error_hidden');
+  if (!notFound.classList.contains('not-found_hidden')) notFound.classList.add('not-found_hidden');
+
+}
+
+document.querySelector('.search__button').addEventListener('click', (event) => {
+  event.preventDefault();
+  if (searchInput.value === '') {
+    searchInput.style.backgroundColor = '#7fffd4';
+    setTimeout(() => {
+      searchInput.style.backgroundColor = '';
+    }, 400);
+  }
+  else {
+    removeResults();
+    newsCardListClass.renderLoader(preloader);
+    newsCardListClass.renderShowMore(document.querySelector('#button-more'), results);
+    search();
+  };
+});
