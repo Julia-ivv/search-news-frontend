@@ -6,8 +6,8 @@ import Form from './components/Form';
 import formValidationErrors from './constants/form-validation-errors';
 import NewsCard from './components/NewsCard';
 import NewsCardList from './components/NewsCardList';
-import { CARDS_IN_LINE } from './constants/constants';
-import dateFormating from './utils/date-formating';
+import { CARDS_IN_LINE, SEARCH_PERIOD } from './constants/constants';
+import { dateFormatingForCards, dateFormatingForSearch } from './utils/date-formating';
 
 /* Переменные */
 const isMobile = window.screen.availWidth <= 320;
@@ -108,10 +108,15 @@ function hideMobileMenu() {
 
 // Выйти из личного кабинета
 function logout() {
-  localStorage.removeItem('news');
+  localStorage.removeItem('JWTnews');
   localStorage.removeItem('userName');
   if (isMobile) showMobileMenu();
   HeaderClass.render({ isLoggedIn: false, userName: '' });
+  // перерисовать иконки у статей
+  const articles = results.querySelectorAll('.article');
+  articles.forEach((elem) => {
+    newsCardClass.renderIcon(!!localStorage.getItem('JWTnews'), false, elem.querySelector('.article__icon'), elem.querySelector('.article__tooltip'));
+  });
 };
 
 // Авторизоваться
@@ -122,7 +127,7 @@ function login() {
 };
 
 function loginLogout() {
-  if (!localStorage.getItem('news')) login()
+  if (!localStorage.getItem('JWTnews')) login()
   else logout();
 };
 
@@ -142,10 +147,15 @@ signinForm.addEventListener('submit', (event) => { //кнопка Войти
   event.preventDefault();
   popupSigninClass.close();
   showMobileMenu();
-  localStorage.setItem('news', 'JWT');
+  localStorage.setItem('JWTnews', 'JWT');
   localStorage.setItem('userName', 'Name');
   signinFormClass.clearForm();
-  HeaderClass.render({ isLoggedIn: true, userName: 'Name' });
+  HeaderClass.render({ isLoggedIn: !!localStorage.getItem('JWTnews'), userName: 'Name' });
+  const articles = results.querySelectorAll('.article');
+  articles.forEach((elem) => {
+    console.log(elem, 'jwt', localStorage.getItem('JWTnews'));
+    newsCardClass.renderIcon(!!localStorage.getItem('JWTnews'), false, elem.querySelector('.article__icon'), elem.querySelector('.article__tooltip'));
+  });
 });
 closeSigninButton.addEventListener('click', () => { // кнопка закрыть
   signinFormClass.clearForm();
@@ -191,8 +201,9 @@ signinFormClass.setEventListeners();
 signupFormClass.setEventListeners();
 
 articlesGrid.addEventListener('click', (event) => {
-  const currentIcon = event.target;
-  if (currentIcon.classList.contains('article__icon_type_bookmark')) currentIcon.style.backgroundImage = 'url(images/bookmark-marked.svg)';
+  const element = event.target;
+  // if (element.classList.contains('article__icon_type_bookmark')) element.style.backgroundImage = 'url(images/bookmark-marked.svg)';
+  if (element.classList.contains('article__image')) window.open(element.dataset.url);
 });
 
 // Закрыть и открыть меню на 320px
@@ -215,7 +226,7 @@ window.addEventListener('scroll', () => {
 
 /* Вызовы функций */
 
-HeaderClass.render({ isLoggedIn: localStorage.getItem('news'), userName: localStorage.getItem('userName') });
+HeaderClass.render({ isLoggedIn: !!localStorage.getItem('JWTnews'), userName: localStorage.getItem('userName') });
 
 
 
@@ -243,10 +254,14 @@ const notFound = document.querySelector('.not-found');
 const preloader = document.querySelector('.preloader');
 const searchInput = document.querySelector('.search__input');
 const articles = document.querySelector('.articles');
+
+const newsCardClass = new NewsCard();
+const renderCardIcon = (isLoggedIn, isSaved, elementIcon, elementTooltip) => new NewsCard().renderIcon(isLoggedIn, isSaved, elementIcon, elementTooltip);
 const newsCardListClass = new NewsCardList({
   initialCards: [],
   template: document.querySelector('#article'),
   container: articles,
+  renderIcon: renderCardIcon,
 });
 
 function validateUrl(url) {
@@ -257,9 +272,6 @@ function isCardCorrect(card) {
   if (!!card.source.name && !!card.description && !!card.title && !!card.publishedAt && validateUrl(card.urlToImage) && validateUrl(card.url)) return true
   else return false;
 }
-
-// const btnMore = document.querySelector('.results__more-button');
-// let moreButtonClick;
 
 function getCardList(allCards, from) {
   let cardsLine = [];
@@ -277,11 +289,11 @@ function getCardList(allCards, from) {
     const btnMore = document.querySelector('.results__more-button');
     btnMore.classList.remove('results__more-button_hidden');
 
-    //const moreButtonClick = function() {
     function moreButtonClick() {
       this.classList.add('results__more-button_hidden');
-      newsCardListClass.renderResults(getCardList(allCards, newFrom), dateFormating);
+      newsCardListClass.renderResults(getCardList(allCards, newFrom), dateFormatingForCards, localStorage.getItem('JWTnews'), false);
       this.removeEventListener('click', moreButtonClick);
+
     };
     btnMore.addEventListener('click', moreButtonClick);
   };
@@ -294,8 +306,13 @@ function showResults() {
 
 function search() {
   const apiKey = '241799af23a34a558b9d14503adfb474';
+  const request = searchInput.value.trim().replace(/\s+/g, '+');
+  const day = new Date();
+  const dayTo = dateFormatingForSearch(day);
+  day.setDate(day.getDate() - SEARCH_PERIOD);
+  const dayFrom = dateFormatingForSearch(day);
 
-  fetch(`https://newsapi.org/v2/everything?q=${searchInput.value}&apiKey=241799af23a34a558b9d14503adfb474&language=ru&from=2020-08-26&to=2020-09-02&pageSize=50`, {
+  fetch(`https://newsapi.org/v2/everything?q=${request}&apiKey=241799af23a34a558b9d14503adfb474&language=ru&from=${dayFrom}&to=${dayTo}&pageSize=50`, {
     method: 'GET',
   })
   .then((res) => {
@@ -303,10 +320,9 @@ function search() {
   })
   .then((data) => {
     if (data.articles.length > 0) {
-      // newsCardListClass.hideLoader(preloader);
       let cards = getCardList(data.articles, 0);
       if (cards.length > 0) {
-        newsCardListClass.renderResults(cards, dateFormating);
+        newsCardListClass.renderResults(cards, dateFormatingForCards, localStorage.getItem('JWTnews'), false);
         showResults();
       } else {
         newsCardListClass.renderNotFound(notFound);
@@ -326,18 +342,17 @@ function search() {
   });
 };
 
-function removeResults() {
-  const btnMore = document.querySelector('.results__more-button');
-  // if (btnMore) btnMore.remove();
-  newsCardListClass.removeShowMore(btnMore);
-  while (articles.firstChild) {
-    articles.removeChild(articles.firstChild);
-  };
-  if (!results.classList.contains('results_hidden')) results.classList.add('results_hidden');
-  if (!resultsError.classList.contains('results__error_hidden')) resultsError.classList.add('results__error_hidden');
-  if (!notFound.classList.contains('not-found_hidden')) notFound.classList.add('not-found_hidden');
+// function removeResults(btnMore, articles, results, resultsError, notFound) {
+//   const btnMore = document.querySelector('.results__more-button');
+//   newsCardListClass.removeShowMore(btnMore);
+//   while (articles.firstChild) {
+//     articles.removeChild(articles.firstChild);
+//   };
+//   if (!results.classList.contains('results_hidden')) results.classList.add('results_hidden');
+//   if (!resultsError.classList.contains('results__error_hidden')) resultsError.classList.add('results__error_hidden');
+//   if (!notFound.classList.contains('not-found_hidden')) notFound.classList.add('not-found_hidden');
 
-}
+// }
 
 document.querySelector('.search__button').addEventListener('click', (event) => {
   event.preventDefault();
@@ -348,7 +363,8 @@ document.querySelector('.search__button').addEventListener('click', (event) => {
     }, 400);
   }
   else {
-    removeResults();
+    const btnMore = document.querySelector('.results__more-button');
+    newsCardListClass.removeResults(btnMore, articles, results, resultsError, notFound);
     newsCardListClass.renderLoader(preloader);
     newsCardListClass.renderShowMore(document.querySelector('#button-more'), results);
     search();

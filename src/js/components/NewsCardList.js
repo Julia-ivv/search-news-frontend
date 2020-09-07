@@ -4,13 +4,24 @@ export default class NewsCardList {
     this._initialCards = options.initialCards;
     this._template = options.template;
     this._container = options.container;
+    this._renderIcon = options.renderIcon;
   }
 
-  renderResults(cards, dateFormating) {
+  renderResults(cards, dateFormating, isLoggedIn, isSaved) {
     // принимает массив экземпляров карточек и отрисовывает их
     cards.forEach(element => {
-      this._addCard(element, dateFormating);
+      this._addCard(element, dateFormating, isLoggedIn, isSaved);
     });
+  }
+
+  removeResults(btnMore, articles, results, resultsError, notFound) {
+    this.removeShowMore(btnMore);
+    while (articles.firstChild) {
+      articles.removeChild(articles.firstChild);
+    };
+    if (!results.classList.contains('results_hidden')) results.classList.add('results_hidden');
+    if (!resultsError.classList.contains('results__error_hidden')) resultsError.classList.add('results__error_hidden');
+    if (!notFound.classList.contains('not-found_hidden')) notFound.classList.add('not-found_hidden');
   }
 
   renderLoader(element) {
@@ -45,7 +56,7 @@ export default class NewsCardList {
     if (element) element.remove();
   }
 
-  _addCard(card, dateFormating) {
+  _addCard(card, dateFormating, isLoggedIn, isSaved) {
     // принимает экземпляр карточки и добавляет ее в список
     let clone = this._template.content.cloneNode(true);
     const img = clone.querySelector('.article__image');
@@ -57,6 +68,8 @@ export default class NewsCardList {
     img.setAttribute('src', card.urlToImage);
     img.setAttribute('alt', card.title);
     img.dataset.url = card.url;
+
+    this._renderIcon(isLoggedIn, isSaved, clone.querySelector('.article__icon'), clone.querySelector('.article__tooltip'));
     this._container.appendChild(clone);
   }
 }
