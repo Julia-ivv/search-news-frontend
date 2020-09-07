@@ -12,10 +12,7 @@ export default class NewsCard {
 
   renderIcon(isLoggedIn, isSaved, elementIcon, elementTooltip) {
     // отрисовывает иконку карточки
-    console.log(!!isLoggedIn, isSaved);
     if (!isLoggedIn) { // неактивная иконка незалогиненого пользователя
-      // console.log(isLoggedIn, isSaved);
-      // elementIcon.classList.add('article__icon_type_bookmark');
       elementIcon.onmouseenter = () => {
         this._showTooltip(elementTooltip);
       };
@@ -24,7 +21,6 @@ export default class NewsCard {
       };
     };
     if (isLoggedIn && !isSaved) { // несохраненная иконка залогиненого пользователя
-      // elementIcon.classList.add('article__icon_type_bookmark');
       this._hideTooltip(elementTooltip);
       elementIcon.onmouseenter = null;
       elementIcon.onmouseleave = null;

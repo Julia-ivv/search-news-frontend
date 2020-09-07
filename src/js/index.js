@@ -3,10 +3,14 @@ import '../css/styles.css';
 import Header from './components/Header';
 import Popup from './components/Popup';
 import Form from './components/Form';
-import formValidationErrors from './constants/form-validation-errors';
 import NewsCard from './components/NewsCard';
 import NewsCardList from './components/NewsCardList';
-import { CARDS_IN_LINE, SEARCH_PERIOD } from './constants/constants';
+import NewsApi from './api/NewsApi';
+
+import FORM_VALIDATION_ERRORS from './constants/form-validation-errors';
+import { CARDS_IN_LINE, SEARCH_PERIOD, API_KEY, PAGE_SIZE } from './constants/constants';
+import { ERROR_NEWS_API } from './constants/errors';
+
 import { dateFormatingForCards, dateFormatingForSearch } from './utils/date-formating';
 
 /* Переменные */
@@ -79,8 +83,8 @@ const popupSigninClass = new Popup({ popup: popupSignin });
 const popupSignupClass = new Popup({ popup: popupSignup });
 const popupSuccessClass = new Popup({ popup: popupSuccess });
 
-const signinFormClass = new Form({ formElement: signinForm, errorTexts: formValidationErrors });
-const signupFormClass = new Form({ formElement: signupForm, errorTexts: formValidationErrors });
+const signinFormClass = new Form({ formElement: signinForm, errorTexts: FORM_VALIDATION_ERRORS });
+const signupFormClass = new Form({ formElement: signupForm, errorTexts: FORM_VALIDATION_ERRORS });
 
 /* Функции */
 
@@ -202,7 +206,6 @@ signupFormClass.setEventListeners();
 
 articlesGrid.addEventListener('click', (event) => {
   const element = event.target;
-  // if (element.classList.contains('article__icon_type_bookmark')) element.style.backgroundImage = 'url(images/bookmark-marked.svg)';
   if (element.classList.contains('article__image')) window.open(element.dataset.url);
 });
 
@@ -263,6 +266,11 @@ const newsCardListClass = new NewsCardList({
   container: articles,
   renderIcon: renderCardIcon,
 });
+const newsApi = new NewsApi({
+  baseUrl: 'https://newsapi.org/v2/',
+  apiKey: API_KEY,
+  endpoint: 'everything',
+});
 
 function validateUrl(url) {
   return /^https?:\/\/(www\.)?(((\d{1,3}\.){3}\d{1,3})|([А-ЯЁа-яё0-9][0-9А-ЯЁа-яё\-.]*\.[А-ЯЁа-яё]+|[a-zA-Z0-9][a-zA-Z0-9\-.]*\.[a-zA-Z]+))(:[1-9]\d{1,4})?(\/?[-0-9a-zA-Z&=?+%._]+)+\/?#?$/i.test(url);
@@ -305,41 +313,35 @@ function showResults() {
 }
 
 function search() {
-  const apiKey = '241799af23a34a558b9d14503adfb474';
   const request = searchInput.value.trim().replace(/\s+/g, '+');
   const day = new Date();
   const dayTo = dateFormatingForSearch(day);
   day.setDate(day.getDate() - SEARCH_PERIOD);
   const dayFrom = dateFormatingForSearch(day);
 
-  fetch(`https://newsapi.org/v2/everything?q=${request}&apiKey=241799af23a34a558b9d14503adfb474&language=ru&from=${dayFrom}&to=${dayTo}&pageSize=50`, {
-    method: 'GET',
-  })
-  .then((res) => {
-    return res.json();
-  })
-  .then((data) => {
-    if (data.articles.length > 0) {
-      let cards = getCardList(data.articles, 0);
-      if (cards.length > 0) {
-        newsCardListClass.renderResults(cards, dateFormatingForCards, localStorage.getItem('JWTnews'), false);
-        showResults();
+  newsApi.getNews(request, 'ru', dayFrom, dayTo, PAGE_SIZE)
+    .then((data) => {
+      if (data.articles.length > 0) {
+        let cards = getCardList(data.articles, 0);
+        if (cards.length > 0) {
+          newsCardListClass.renderResults(cards, dateFormatingForCards, localStorage.getItem('JWTnews'), false);
+          showResults();
+        } else {
+          newsCardListClass.renderNotFound(notFound);
+        }
       } else {
         newsCardListClass.renderNotFound(notFound);
-      }
-    } else {
-      newsCardListClass.renderNotFound(notFound);
-    };
-    newsCardListClass.hideLoader(preloader);
-  })
-  .catch((err) => {
-    console.log(err);
-    const btnMore = document.querySelector('.results__more-button');
-    newsCardListClass.removeShowMore(btnMore);
-    newsCardListClass.hideLoader(preloader);
-    newsCardListClass.renderError(resultsError, err);
-    showResults();
-  });
+      };
+      newsCardListClass.hideLoader(preloader);
+    })
+    .catch((err) => {
+      // console.log(err);
+      const btnMore = document.querySelector('.results__more-button');
+      newsCardListClass.removeShowMore(btnMore);
+      newsCardListClass.hideLoader(preloader);
+      newsCardListClass.renderError(resultsError, ERROR_NEWS_API);
+      showResults();
+    });
 };
 
 // function removeResults(btnMore, articles, results, resultsError, notFound) {
