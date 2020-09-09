@@ -143,13 +143,13 @@
       <form class="popup__form" name="form-signin" id="form-signin">
         <div class="popup__input-container">
           <label class="popup__input-title">Email
-            <input type="email" inputmode="email" name="email-signin" pattern="(?!.*--)[a-zA-Z0-9][\-\.\w]*(?<!-)@[a-zA-Z0-9]+[\-\.\w]*(?<!-)\.[a-zA-Z]+$" autocomplete="off" required class="popup__input popup__input_type_email" placeholder="Введите почту">
+            <input type="email" inputmode="email" id="email-signin" name="email-signin" pattern="(?!.*--)[a-zA-Z0-9][\-\.\w]*(?<!-)@[a-zA-Z0-9]+[\-\.\w]*(?<!-)\.[a-zA-Z]+$" autocomplete="off" required class="popup__input popup__input_type_email" placeholder="Введите почту">
           </label>
           <span id="error-email-signin" class="error-message error-message_type_input"></span>
         </div>
         <div class="popup__input-container">
           <label class="popup__input-title">Пароль
-            <input type="password" inputmode="text" name="password-signin" autocomplete="off" required class="popup__input popup__input_type_password" placeholder="Введите пароль">
+            <input type="password" inputmode="text" id="password-signin" name="password-signin" autocomplete="off" required class="popup__input popup__input_type_password" placeholder="Введите пароль">
           </label>
           <span id="error-password-signin" class="error-message error-message_type_input"></span>
         </div>
@@ -172,19 +172,19 @@
       <form class="popup__form" name="form-signup" id="form-signup">
         <div class="popup__input-container">
           <label class="popup__input-title">Email
-            <input type="email" inputmode="email" name="email-signup" pattern="(?!.*--)[a-zA-Z0-9][\-\.\w]*(?<!-)@[a-zA-Z0-9]+[\-\.\w]*(?<!-)\.[a-zA-Z]+$" autocomplete="off" required class="popup__input popup__input_type_email" placeholder="Введите почту">
+            <input type="email" inputmode="email" id="email-signup" name="email-signup" pattern="(?!.*--)[a-zA-Z0-9][\-\.\w]*(?<!-)@[a-zA-Z0-9]+[\-\.\w]*(?<!-)\.[a-zA-Z]+$" autocomplete="off" required class="popup__input popup__input_type_email" placeholder="Введите почту">
           </label>
           <span id="error-email-signup" class="error-message error-message_type_input"></span>
         </div>
         <div class="popup__input-container">
           <label class="popup__input-title">Пароль
-            <input type="password" inputmode="text" name="password-signup" autocomplete="off" required class="popup__input popup__input_type_password" placeholder="Введите пароль">
+            <input type="password" inputmode="text" id="password-signup" name="password-signup" autocomplete="off" required class="popup__input popup__input_type_password" placeholder="Введите пароль">
           </label>
           <span id="error-password-signup" class="error-message error-message_type_input"></span>
         </div>
         <div class="popup__input-container">
           <label class="popup__input-title">Имя
-            <input type="text" inputmode="text" name="name-signup" autocomplete="off" required minlength="2" maxlength="30" class="popup__input popup__input_type_name" placeholder="Введите свое имя">
+            <input type="text" inputmode="text" id="name-signup" name="name-signup" autocomplete="off" required minlength="2" maxlength="30" class="popup__input popup__input_type_name" placeholder="Введите свое имя">
           </label>
           <span id="error-name-signup" class="error-message error-message_type_input"></span>
         </div>
