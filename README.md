@@ -6,7 +6,7 @@
 
 https://Julia-ivv.github.io/search-news-frontend
 ----
-Версия 0.0.25
+Версия 0.0.26
 
 Инструкция по развертыванию проекта
 ---

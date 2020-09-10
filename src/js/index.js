@@ -9,7 +9,7 @@ import NewsApi from './api/NewsApi';
 import MainApi from './api/MainApi';
 
 import FORM_VALIDATION_ERRORS from './constants/form-validation-errors';
-import { CARDS_IN_LINE, SEARCH_PERIOD, API_KEY, PAGE_SIZE, ICON_BOOKMARK, ICON_BOOKMARK_HOVER, ICON_BOOKMARK_MARKED } from './constants/constants';
+import { CARDS_IN_LINE, SEARCH_PERIOD, API_KEY, PAGE_SIZE, LANGUAGE, ICON_BOOKMARK, ICON_BOOKMARK_HOVER, ICON_BOOKMARK_MARKED } from './constants/constants';
 import { ERROR_NEWS_API, ERROR_SIGNUP, ERROR_CONFLICT, ERROR_AUTHORIZATION,
   ERROR_USER_NOT_FOUND, ERROR_ARTICLE_NOT_FOUND, ERROR_FORBIDDEN, ERROR_SERVER, ERROR_KEYWORD } from './constants/query-errors';
 import { BASE_URL_MAIN_API, CONTENT_TYPE, BASE_URL_NEWS_API } from './constants/api-settings';
@@ -202,26 +202,36 @@ function search() {
   day.setDate(day.getDate() - SEARCH_PERIOD);
   const dayFrom = dateFormatingForSearch(day);
 
-  newsApi.getNews(request, 'ru', dayFrom, dayTo, PAGE_SIZE)
+  newsApi.getNews(request, LANGUAGE, dayFrom, dayTo, PAGE_SIZE)
     .then((data) => {
       if (data.articles.length > 0) {
         // получить уже сохраненные статьи пользователя
-        mainApi.getArticles()
-        .then((res) => {
-          const alreadySavedCards = res.data;
-          let cards = getCardList(data.articles, res.data, 0);
+        if (!!localStorage.getItem('JWTnews')) {
+          mainApi.getArticles()
+          .then((res) => {
+            const alreadySavedCards = res.data;
+            let cards = getCardList(data.articles, res.data, 0);
+            if (cards.length > 0) {
+              cards.forEach(foundCard => {
+                const { isSaved, idSavedCard } = searchInSavedCard(alreadySavedCards, foundCard);
+                newsCardListClass.addCard(foundCard, dateFormatingForCards, isSaved, searchInput.value.trim(), false, idSavedCard);
+              });
+              showResults();
+            } else {
+              newsCardListClass.renderNotFound(notFound);
+            }
+          })
+          .catch((err) => alert(err));
+        } else {
+          let cards = getCardList(data.articles, [], 0);
           if (cards.length > 0) {
-            cards.forEach(foundCard => {
-              const { isSaved, idSavedCard } = searchInSavedCard(alreadySavedCards, foundCard);
-              newsCardListClass.addCard(foundCard, dateFormatingForCards, isSaved, searchInput.value.trim(), false, idSavedCard);
-            });
+            newsCardListClass.renderResults(cards, dateFormatingForCards, false, searchInput.value.trim(), false);
             showResults();
           } else {
             newsCardListClass.renderNotFound(notFound);
-          }
-        })
-        .catch((err) => alert(err));
-      } else {
+          };
+        };
+      } else { // по ключевому слову ничего не найдено
         newsCardListClass.renderNotFound(notFound);
       };
       newsCardListClass.hideLoader(preloader);
