@@ -1,0 +1,18 @@
+.main-picture {
+  background-image: url(images/georgia-de-lotz--UsJoNxLaNo-unsplash.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+@media (max-width: 768px) {
+  .main-picture {
+    background-image: url(images/georgia-de-lotz--UsJoNxLaNo-unsplash768.png);
+  }
+}
+
+@media (max-width: 320px) {
+  .main-picture {
+    background-image: url(images/georgia-de-lotz--UsJoNxLaNo-unsplash320.png);
+  }
+}

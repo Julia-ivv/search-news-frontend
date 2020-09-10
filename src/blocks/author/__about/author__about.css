@@ -1,0 +1,17 @@
+.author__about {
+  width: 49.70%;
+  margin-left: 4.6%;
+}
+
+@media (max-width: 768px) {
+  .author__about {
+    width: 61.63%;
+  }
+}
+
+@media (max-width: 320px) {
+  .author__about {
+    width: 100%;
+    margin-left: 0;
+  }
+}

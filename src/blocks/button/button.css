@@ -1,0 +1,14 @@
+@import url(./_style/_blue/button_style_blue.css);
+@import url(./_style/_gray/button_style_gray.css);
+
+.button {
+  box-sizing: border-box;
+  border-radius: 100px;
+  border: none;
+
+  font-family: 'Roboto', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+}

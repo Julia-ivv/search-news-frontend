@@ -1,0 +1,25 @@
+@import url(./__block-title/author__block-title.css);
+@import url(./__about/author__about.css);
+@import url(./__image/author__image.css);
+@import url(./__block-text/author__block-text.css);
+
+.author {
+  background-color: #fff;
+  width: 85%;
+  margin: auto;
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .author {
+    width: 89.58%;
+  }
+}
+
+@media (max-width: 320px) {
+  .author {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+  }
+}

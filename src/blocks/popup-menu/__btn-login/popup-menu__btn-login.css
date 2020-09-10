@@ -1,0 +1,20 @@
+.popup-menu__btn-login {
+  border: 1px solid #fff;
+  box-sizing: border-box;
+  border-radius: 100px;
+  background-color: transparent;
+  width: 90vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 24px;
+
+  font-family: 'Roboto', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #fff;
+  padding: 15px;
+}

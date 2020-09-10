@@ -1,0 +1,23 @@
+.footer__link_type_icon {
+  width: 20px;
+  height: 20px;
+  margin-left: 19px;
+}
+
+@media (max-width: 870px) {
+  .footer__link_type_icon {
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer__link_type_icon {
+    margin-left: 22px;
+  }
+}
+
+@media (max-width: 320px) {
+  .footer__link_type_icon {
+    margin-left: 37px;
+  }
+}

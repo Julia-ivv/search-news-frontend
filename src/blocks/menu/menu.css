@@ -1,0 +1,33 @@
+@import url(./__btn-login/menu__btn-login.css);
+@import url(./__link/menu__link.css);
+@import url(./__btn-icon/menu__btn-icon.css);
+@import url(./__link/_underline/_white/menu__link_underline_white.css);
+@import url(./__link/_underline/_black/menu__link_underline_black.css);
+@import url(./__link/_hidden/menu__link_hidden.css);
+@import url(./__btn-icon/_hidden/menu__btn-icon_hidden.css);
+
+.menu {
+  padding-right: 7.22%;
+  padding-top: 1.2vw;
+  padding-bottom: 0.7vw;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+@media (max-width: 768px) {
+  .menu {
+    font-size: 2.0833vw;
+    padding-right: 5.21%;
+    padding-top: 1.82%;
+    padding-bottom: 1.56%;
+  }
+}
+
+@media (max-width: 320px) {
+  .menu {
+    display: none;
+  }
+}

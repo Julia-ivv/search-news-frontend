@@ -1,0 +1,13 @@
+@import url(./__block-text/preloader__block-text.css);
+@import url(./_hidden/preloader_hidden.css);
+
+.preloader {
+  position: relative;
+  background-color: #f5f6f7;
+}
+
+@media (max-width: 320px) {
+  .preloader {
+    display: none;
+  }
+}

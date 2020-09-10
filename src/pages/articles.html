@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../images/favicon.png" type="image/png">
+  <title>Saved articles</title>
+  <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.css %>">
+</head>
+<body class="root">
+  <header class="header header_style_white">
+    <p class="logo">NewsExplorer</p>
+    <nav class="menu">
+      <a href="./index.html" class="menu__link">Главная</a>
+      <a href="./articles.html" class="menu__link menu__link_underline_black">Сохранённые статьи</a>
+      <button class="menu__btn-login">Грета<img src="<%=require('../images/logout-black.svg').default%>" alt="logout" class="menu__btn-icon">
+      </button>
+    </nav>
+    <img src="<%=require('../images/icon-menu-white.svg').default%>" class="header__menu-open" alt="open menu"></img>
+  </header>
+
+  <section class="articles-info">
+    <h3 class="block-text block-text_style_dark-opacity">Сохранённые статьи</h3>
+    <h1 class="block-title articles-info__block-title">Грета, у вас 5 сохранённых статей</h1>
+    <h2 class="block-text block-text_style_dark">По ключевым словам: <span class="articles-info__span-accept">Природа, Тайга</span> и <span class="articles-info__span-accept">2 другим</span></h2>
+  </section>
+
+  <section class="results">
+    <div class="articles">
+      <div class="article">
+        <img src="<%=require('../images/image_08.png').default%>" alt="Национальное достояние – парки" class="article__image">
+        <div class="article__about">
+          <p class="article__date">2 августа, 2019</p>
+          <h4 class="article__title">Национальное достояние – парки</h4>
+          <p class="article__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
+          <p class="article__source">Лента.ру</p>
+        </div>
+        <div class="article__icon article__icon_type_trash" data-title="Убрать из сохранённых"></div>
+        <p class="article__keyword">Природа</p>
+      </div>
+      <div class="article">
+        <img src="<%=require('../images/image_04.png').default%>" alt="Лесные огоньки" class="article__image">
+        <div class="article__about">
+          <p class="article__date">2 августа, 2019</p>
+          <h4 class="article__title">Лесные огоньки: история одной фотографии</h4>
+          <p class="article__text">Фотограф отвлеклась от освещения суровой политической реальности Мексики, чтобы запечатлеть ускользающую красоту одного из местных чудес природы.</p>
+          <p class="article__source">Медуза</p>
+        </div>
+        <div class="article__icon article__icon_type_trash" data-title="Убрать из сохранённых"></div>
+        <p class="article__keyword">Природа</p>
+      </div>
+      <div class="article">
+        <img src="<%=require('../images/image_07.png').default%>" alt="Первозданная тайга" class="article__image">
+        <div class="article__about">
+          <p class="article__date">2 августа, 2019</p>
+          <h4 class="article__title">«Первозданная тайга»: новый фотопроект Игоря Шпиленка</h4>
+          <p class="article__text">Знаменитый фотограф снимает первозданные леса России, чтобы рассказать о необходимости их сохранения. В этот раз он отправился в Двинско-Пинежскую тайгу, где</p>
+          <p class="article__source">Риа</p>
+        </div>
+        <div class="article__icon article__icon_type_trash" data-title="Убрать из сохранённых"></div>
+        <p class="article__keyword">Тайга</p>
+      </div>
+      <div class="article">
+        <img src="<%=require('../images/image_06.png').default%>" alt="Национальное достояние – парки" class="article__image">
+        <div class="article__about">
+          <p class="article__date">2 августа, 2019</p>
+          <h4 class="article__title">Национальное достояние – парки</h4>
+          <p class="article__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
+          <p class="article__source">Дзен</p>
+        </div>
+        <div class="article__icon article__icon_type_trash" data-title="Убрать из сохранённых"></div>
+        <p class="article__keyword">Парки</p>
+      </div>
+      <div class="article">
+        <img src="<%=require('../images/image_04.png').default%>" alt="Лесные огоньки" class="article__image">
+        <div class="article__about">
+          <p class="article__date">2 августа, 2019</p>
+          <h4 class="article__title">Лесные огоньки: история одной фотографии</h4>
+          <p class="article__text">Фотограф отвлеклась от освещения суровой политической реальности Мексики, чтобы запечатлеть ускользающую красоту одного из местных чудес природы.</p>
+          <p class="article__source">Медуза</p>
+        </div>
+        <div class="article__icon article__icon_type_trash" data-title="Убрать из сохранённых"></div>
+        <p class="article__keyword">Фотография</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p class="footer__copyright">&copy; 2020 Supersite, Powered by News API</p>
+    <nav class="footer__links">
+      <ul class="footer__links-container footer__links-container_type_text">
+        <li class="footer__link">
+          <a href="./index.html" class="footer__link footer__link_type_text">Главная</a>
+        </li>
+        <li class="footer__link">
+          <a href="https://praktikum.yandex.ru/" class="footer__link footer__link_type_text" target="blank">Яндекс.Практикум</a>
+        </li>
+      </ul>
+      <ul class="footer__links-container footer__links-container_type_icon">
+        <li class="footer__link">
+          <a href="https://github.com/" class="footer__link footer__link_type_icon" target="blank">
+            <img src="<%=require('../images/github.svg').default%>" alt="иконка github" class="footer__icon">
+          </a>
+        </li>
+        <li class="footer__link">
+          <a href="https://www.facebook.com/" class="footer__link footer__link_type_icon" target="blank">
+            <img src="<%=require('../images/fb.svg').default%>" alt="иконка facebook" class="footer__icon"></a>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </footer>
+
+  <div class="popup-menu popup-menu_hidden">
+    <div class="popup-menu__drop-down-menu">
+      <header class="header header_style_black">
+        <p class="logo">NewsExplorer</p>
+        <img src="<%=require('../images/menu-close-black.svg').default%>" alt="close" class="popup-menu__close">
+      </header>
+      <nav class="popup-menu__content">
+        <a href="./index.html" class="popup-menu__link">Главная</a>
+        <a href="./articles.html" class="popup-menu__link" id="articles">Сохранённые статьи</a>
+        <button class="popup-menu__btn-login">Грета
+          <img src="<%=require('../images/logout-white.svg').default%>" alt="logout" class="popup-menu__btn-icon">
+        </button>
+      </nav>
+    </div>
+  </div>
+
+  <script type="module" src="<%= htmlWebpackPlugin.files.js %>"></script>
+</body>
+</html>

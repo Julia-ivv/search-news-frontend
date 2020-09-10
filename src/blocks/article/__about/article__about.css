@@ -1,0 +1,12 @@
+.article__about {
+  width: 88%;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+@media (max-width: 768px) {
+  .article__about {
+    width: 85.71%;
+  }
+}

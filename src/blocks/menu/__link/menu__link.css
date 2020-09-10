@@ -1,0 +1,26 @@
+.menu__link {
+  text-decoration: none;
+  color: inherit;
+  margin-right: 24px;
+  cursor: url('images/cursor-lapka.svg'), auto;
+
+  padding-bottom: 1.6vw;
+}
+
+@media (max-width: 1024px) {
+  .menu__link {
+    padding-bottom: 2vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .menu__link {
+    padding-bottom: 3vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .menu__link {
+    padding-bottom: 3.2vw;
+  }
+}

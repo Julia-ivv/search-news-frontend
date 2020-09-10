@@ -1,0 +1,37 @@
+.article__source {
+  font-family: 'Roboto Slab', Arial, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: .4px;
+  text-transform: uppercase;
+  color: #b6bcbf;
+  margin-top: 0;
+  margin-bottom: 0;
+  position: absolute;
+  left: 6%;
+  bottom: 3%;
+}
+
+@media (max-width: 1024px) {
+  .article__source {
+    bottom: 2%;
+  }
+}
+
+@media (max-width: 768px) {
+  .article__source {
+    font-size: 2.0833vw;
+    line-height: 2.6042vw;
+  }
+}
+
+@media (max-width: 320px) {
+  .article__source {
+    font-size: 16px;
+    line-height: 20px;
+    left: 19px;
+    bottom: 9px;
+  }
+}

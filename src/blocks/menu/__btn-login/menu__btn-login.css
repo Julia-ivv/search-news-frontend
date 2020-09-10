@@ -1,0 +1,24 @@
+@import url(./_style/_black/menu__btn-login_style_black.css);
+@import url(./_style/_white/menu__btn-login_style_white.css);
+
+.menu__btn-login {
+  background-color: transparent;
+  box-sizing: border-box;
+  border-radius: 100px;
+  display: inline-flex;
+  padding: 12px 15px;
+  cursor: url('images/cursor-lapka.svg'), auto;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+@media (max-width: 768px) {
+  .menu__btn-login {
+    font-size: 2.0833vw;
+    line-height: 3.125vw;
+    padding: 8px 12px;
+  }
+}

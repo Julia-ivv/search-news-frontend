@@ -1,0 +1,21 @@
+@import url(./__span-accept/articles-info__span-accept.css);
+@import url(./__block-title/articles-info__block-title.css);
+
+.articles-info {
+  width: 85.55%;
+  margin: 3.3% auto 3.94%;
+}
+
+@media (max-width: 768px) {
+  .articles-info {
+    width: 89%;
+  }
+}
+
+@media (max-width: 320px) {
+  .articles-info {
+    width: 91%;
+    margin: 8px auto 32px;
+    padding-top: 56px;
+  }
+}

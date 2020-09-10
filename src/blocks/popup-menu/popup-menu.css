@@ -1,0 +1,22 @@
+@import url(./__drop-down-menu/popup-menu__drop-down-menu.css);
+@import url(./__close/popup-menu__close.css);
+@import url(./_hidden/popup-menu_hidden.css);
+@import url(./__content/popup-menu__content.css);
+@import url(./__link/popup-menu__link.css);
+@import url(./__btn-login/popup-menu__btn-login.css);
+@import url(./__btn-icon/popup-menu__btn-icon.css);
+@import url(./__btn-icon/_hidden/popup-menu__btn-icon_hidden.css);
+
+.popup-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+
+

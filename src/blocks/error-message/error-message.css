@@ -1,0 +1,14 @@
+@import url(./_visible/error-message_visible.css);
+@import url(./_type/_button/error-message_type_button.css);
+@import url(./_type/_input/error-message_type_input.css);
+
+.error-message {
+  color: #ff0000;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  opacity: 0;
+  padding-top: 0px;
+}

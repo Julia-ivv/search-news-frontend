@@ -1,0 +1,10 @@
+.block-text_style_dark-opacity {
+  color: rgba(26, 27, 34, 0.5);
+}
+
+@media (max-width: 320px) {
+  .block-text.block-text_style_dark-opacity {
+    font-size: 12px;
+    line-height: 24px;
+  }
+}

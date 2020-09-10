@@ -1,0 +1,9 @@
+.root__results {
+  padding-top: 5.62%;
+}
+
+@media (max-width: 320px) {
+  .root__results {
+    padding-top: 32px;
+  }
+}

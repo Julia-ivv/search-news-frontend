@@ -1,0 +1,59 @@
+.article__icon {
+  width: 40px;
+  height: 40px;
+  border: none;
+  box-sizing: border-box;
+  border-radius: 8px;
+  position: absolute;
+  top: 4%;
+  right: 6%;
+  cursor: url('images/cursor-lapka.svg'), auto;
+  outline: none;
+  background-position: center;
+  background-size: cover;
+}
+
+.article__icon:hover::after {
+  content: attr(data-title);
+  font-family: 'Roboto', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  text-align: center;
+  font-size: .83vw;
+  line-height: .97vw;
+
+  margin: 0;
+  color: #000000;
+  background-color: #fff;
+
+  position: absolute;
+  top: 0;
+  right: 45px;
+  z-index: 2;
+
+  border-radius: 10px;
+}
+
+@media (max-width: 1024px) {
+  .article__icon {
+    top: 3%;
+  }
+}
+
+@media (max-width: 768px) {
+  .article__icon {
+    top: 1.57%;
+    right: 3.57%;
+    width: 18.6%;
+    height: 8.9%;
+  }
+}
+
+@media (max-width: 320px) {
+  .article__icon {
+    width: 40px;
+    height: 40px;
+    top: 16px;
+    right: 16px;
+  }
+}

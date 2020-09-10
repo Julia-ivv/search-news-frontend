@@ -1,0 +1,15 @@
+.article__icon_type_trash {
+  background-image: url('images/trash.svg');
+  transition: background-image 1s;
+}
+
+.article__icon_type_trash:hover {
+  background-image: url('images/trash-hover.svg');
+}
+
+.article__icon_type_trash:hover::after {
+  font-size: 12px;
+  line-height: 14px;
+  padding: 14px 0 13px;
+  width: 159px;
+}

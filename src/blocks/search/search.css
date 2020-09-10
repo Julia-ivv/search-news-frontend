@@ -1,0 +1,36 @@
+@import url(./__button/search__button.css);
+@import url(./__form/search__form.css);
+@import url(./__input/search__input.css);
+@import url(./__block-text/search__block-text.css);
+@import url(./__title/search__title.css);
+
+.search {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 28.88%;
+  margin-right: 28.88%;
+}
+
+@media (max-width: 1024px) {
+  .search {
+    margin-left: 24.83%;
+    margin-right: 24.83%;
+  }
+}
+
+@media (max-width: 768px) {
+  .search {
+    margin-left: 20.83%;
+    margin-right: 20.83%;
+  }
+}
+
+@media (max-width: 320px) {
+  .search {
+    margin-left: 19px;
+    margin-right: 16px;
+    padding-top: 56px;
+  }
+}

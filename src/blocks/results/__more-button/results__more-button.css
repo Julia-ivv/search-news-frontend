@@ -1,0 +1,33 @@
+.results__more-button {
+  border-radius: 80px;
+  background-color: #fff;
+  width: 288px;
+  height: 64px;
+  margin: 0 auto 0;
+  border: none;
+  display: block;
+  cursor: url('images/cursor-lapka.svg'), auto;
+  transition: opacity .5s;
+}
+
+.results__more-button:hover {
+  opacity: .9;
+}
+
+@media (max-width: 768px) {
+  .results__more-button {
+    width: 34.88%;
+    height: 7.29vw;
+    font-size: 2.3438vw;
+    line-height: 3.125vw;
+  }
+}
+
+@media (max-width: 320px) {
+  .results__more-button {
+    width: 288px;
+    height: 64px;
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
