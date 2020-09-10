@@ -53,16 +53,6 @@ export default class Form {
     }
   }
 
-  _clear() {
-    // очищает поля, вспомогательный
-    // this._formElement.reset();
-  }
-
-  _getInfo() {
-    // возвращает данные формы, вспомогательный
-
-  }
-
   clearForm() {
     this._formElement.reset();
     this._formElement.querySelectorAll('.error-message').forEach((elem) => this._hideError(elem));

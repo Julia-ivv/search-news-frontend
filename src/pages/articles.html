@@ -53,13 +53,26 @@
 
   <section class="articles-info">
     <h3 class="block-text block-text_style_dark-opacity">Сохранённые статьи</h3>
-    <h1 class="block-title articles-info__block-title">Грета, у вас 5 сохранённых статей</h1>
-    <h2 class="block-text block-text_style_dark">По ключевым словам: <span class="articles-info__span-accept">Природа, Тайга</span> и <span class="articles-info__span-accept">2 другим</span></h2>
+    <h1 class="block-title articles-info__block-title" id="count-articles"></h1>
+    <h2 class="block-text block-text_style_dark">По ключевым словам: <span class="articles-info__span-accept" id="keywords"></span><span class="articles-info__span-accept" id="rest-keyword"></span></h2>
   </section>
 
-  <section class="results">
+  <section class="results results_hidden">
     <div class="articles">
-      <div class="article">
+      <template id="article">
+        <div class="article">
+          <img src="<%=require('../images/image_04.png').default%>" alt="Лесные огоньки" class="article__image">
+          <div class="article__about">
+            <p class="article__date"></p>
+            <h4 class="article__title"></h4>
+            <p class="article__text"></p>
+            <p class="article__source"></p>
+          </div>
+          <div class="article__icon article__icon_type_trash" data-title="Убрать из сохранённых"></div>
+          <p class="article__keyword"></p>
+        </div>
+      </template>
+      <!-- <div class="article">
         <img src="<%=require('../images/image_08.png').default%>" alt="Национальное достояние – парки" class="article__image">
         <div class="article__about">
           <p class="article__date">2 августа, 2019</p>
@@ -113,7 +126,7 @@
         </div>
         <div class="article__icon article__icon_type_trash" data-title="Убрать из сохранённых"></div>
         <p class="article__keyword">Фотография</p>
-      </div>
+      </div> -->
     </div>
   </section>
 

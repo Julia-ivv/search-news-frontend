@@ -6,3 +6,4 @@ export const ERROR_USER_NOT_FOUND = 'Пользователь не найден'
 export const ERROR_ARTICLE_NOT_FOUND = 'Статья не найдена';
 export const ERROR_FORBIDDEN = 'Нельзя удалять чужие статьи';
 export const ERROR_SERVER = 'Произошла ошибка на сервере';
+export const ERROR_KEYWORD = 'Нужно ввести ключевое слово';

@@ -9,49 +9,33 @@
 </head>
 <body class="root">
   <div class="main-picture">
-    <!-- <template id="header"> -->
-      <header class="header header_style_black">
-        <p class="logo">NewsExplorer</p>
-        <nav class="menu">
-          <a href="./index.html" class="menu__link menu__link_underline_white">Главная</a>
-          <a href="./articles.html" class="menu__link menu__link_hidden" id="articles-menu">Сохранённые статьи</a>
-          <button class="menu__btn-login menu__btn-login_style_white">Авторизоваться
-            <img src="<%=require('../images/logout-white.svg').default%>" alt="logout" class="menu__btn-icon menu__btn-icon_hidden">
-          </button>
-        </nav>
-        <img src="<%=require('../images/icon-menu-black.svg').default%>" alt="open menu" class="header__menu-open"></img>
+    <header class="header header_style_black">
+      <p class="logo">NewsExplorer</p>
+      <nav class="menu">
+        <a href="./index.html" class="menu__link menu__link_underline_white">Главная</a>
+        <a href="./articles.html" class="menu__link menu__link_hidden" id="articles-menu">Сохранённые статьи</a>
+        <button class="menu__btn-login menu__btn-login_style_white">Авторизоваться
+          <img src="<%=require('../images/logout-white.svg').default%>" alt="logout" class="menu__btn-icon menu__btn-icon_hidden">
+        </button>
+      </nav>
+      <img src="<%=require('../images/icon-menu-black.svg').default%>" alt="open menu" class="header__menu-open"></img>
 
-        <div class="popup-menu popup-menu_hidden">
-          <div class="popup-menu__drop-down-menu">
-            <header class="header header_style_black">
-              <p class="logo">NewsExplorer</p>
-              <img src="<%=require('../images/menu-close-black.svg').default%>" alt="close" class="popup-menu__close">
-            </header>
-            <nav class="popup-menu__content">
-              <a href="./index.html" class="popup-menu__link">Главная</a>
-              <a href="./articles.html" class="popup-menu__link popup-menu__link_hidden" id="articles-popup-menu">Сохранённые статьи</a>
-              <button class="popup-menu__btn-login">Авторизоваться
-                <img src="<%=require('../images/logout-white.svg').default%>" alt="logout" class="popup-menu__btn-icon popup-menu__btn-icon_hidden">
-              </button>
-            </nav>
-          </div>
+      <div class="popup-menu popup-menu_hidden">
+        <div class="popup-menu__drop-down-menu">
+          <header class="header header_style_black">
+            <p class="logo">NewsExplorer</p>
+            <img src="<%=require('../images/menu-close-black.svg').default%>" alt="close" class="popup-menu__close">
+          </header>
+          <nav class="popup-menu__content">
+            <a href="./index.html" class="popup-menu__link">Главная</a>
+            <a href="./articles.html" class="popup-menu__link popup-menu__link_hidden" id="articles-popup-menu">Сохранённые статьи</a>
+            <button class="popup-menu__btn-login">Авторизоваться
+              <img src="<%=require('../images/logout-white.svg').default%>" alt="logout" class="popup-menu__btn-icon popup-menu__btn-icon_hidden">
+            </button>
+          </nav>
         </div>
-      </header>
-    <!-- </template> -->
-
-    <!-- <template id="header">
-      <header class="header">
-        <p class="logo">NewsExplorer</p>
-        <nav class="menu">
-          <a href="./index.html" class="menu__link" id="main-menu">Главная</a>
-          <a href="./articles.html" class="menu__link menu__link_hidden" id="articles-menu">Сохранённые статьи</a>
-          <button class="menu__btn-login">
-            <img src="<%=require('../images/logout-white.svg').default%>" alt="logout" class="menu__btn-icon menu__btn-icon_hidden">
-          </button>
-        </nav>
-        <img src="<%=require('../images/icon-menu-black.svg').default%>" alt="open menu" class="header__menu-open"></img>
-      </header>
-    </template> -->
+      </div>
+    </header>
 
     <section class="search">
       <h1 class="search__title">Что в мире творится?</h1>
@@ -75,11 +59,11 @@
           <p class="article__text"></p>
           <p class="article__source"></p>
         </div>
-        <button class="article__icon article__icon_type_bookmark"></button> <!--article__icon_type_bookmark    data-title="Войдите, чтобы сохранять статьи"-->
+        <button class="article__icon article__icon_type_bookmark"></button>
+        <p class="article__keyword article__keyword_hidden"></p>
         <p class="article__tooltip article__tooltip_hidden">Войдите, чтобы сохранять статьи</p>
       </div>
     </template>
-    <!-- <button class="button results__more-button ">Показать еще</button> -->
     <template id="button-more">
       <button class="button results__more-button results__more-button_hidden">Показать еще</button>
     </template>
@@ -99,14 +83,14 @@
 
   <section class="author root__author">
     <picture>
-      <source srcset="<%=require('../images/avatar-320.png').default%>" media="(max-width: 320px)">
-      <source srcset="<%=require('../images/avatar-768.png').default%>" media="(max-width: 768px)">
-      <img src="<%=require('../images/avatar.png').default%>" alt="Аватар" class="author__image">
+      <source srcset="<%=require('../images/avatar-320.jpg').default%>" media="(max-width: 320px)">
+      <source srcset="<%=require('../images/avatar-768.jpg').default%>" media="(max-width: 768px)">
+      <img src="<%=require('../images/avatar.jpg').default%>" alt="Аватар" class="author__image">
     </picture>
     <div class="author__about">
       <h3 class="block-title author__block-title">Об авторе</h3>
-      <p class="block-text block-text_style_dark author__block-text">Это блок с описанием автора проекта. Здесь следует указать, как вас зовут, чем вы занимаетесь, какими технологиями разработки владеете.</p>
-      <p class="block-text block-text_style_dark author__block-text">Также можно рассказать о процессе обучения в Практикуме, чему вы тут научились, и чем можете помочь потенциальным заказчикам.</p>
+      <p class="block-text block-text_style_dark author__block-text">Меня зовут Юля. Я прошла обучение в Яндекс.Практикум на курсе веб-разработчик. Изучила HTML, CSS, JS, Node.js, Webpack, Express.js.</p>
+      <p class="block-text block-text_style_dark author__block-text">В процессе обучения я научилась делать небольшие сайты с адаптивным дизайном, работать с базой данных MongoDB, изучила основы бэкенда.</p>
     </div>
   </section>
 

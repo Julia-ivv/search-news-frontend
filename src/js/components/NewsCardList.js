@@ -1,20 +1,14 @@
 export default class NewsCardList {
   constructor(options) {
-    // массив карточек, которые должны быть в списке при первой отрисовке
-    this._initialCards = options.initialCards;
     this._template = options.template;
     this._container = options.container;
     this._renderIcon = options.renderIcon;
-    // this._querySaveArticle = options.querySaveArticle;
-    // this._queryRemoveArticle = options.queryRemoveArticle;
-    // this._errorTexts = options.errorTexts;
   }
 
-  renderResults(cards, dateFormating, isSaved, keyword) {
+  renderResults(cards, dateFormating, isSaved, keyword, removableCard) {
     // принимает массив экземпляров карточек и отрисовывает их
-    // console.log('render', cards, isSaved, keyword);
     cards.forEach(element => {
-      this._addCard(element, dateFormating, isSaved, keyword);
+      this.addCard(element, dateFormating, isSaved, keyword, removableCard);
     });
   }
 
@@ -60,95 +54,25 @@ export default class NewsCardList {
     if (element) element.remove();
   }
 
-  // _saveArticle(newArticle, elementIcon, tooltipElement) {
-  //   // добавить в сохраненные
-  //   console.log(this);
-  //   this._querySaveArticle({
-  //     keyword: newArticle.keyword,
-  //     title: newArticle.title,
-  //     text: newArticle.text,
-  //     date: newArticle.date,
-  //     source: newArticle.source,
-  //     link: newArticle.link,
-  //     image: newArticle.image,
-  //   })
-  //     .then((res) => {
-  //       elementIcon.setAttribute('data-id', res.data._id);
-  //       this._renderIcon(true, elementIcon, tooltipElement);
-  //       // this.setEventListeners({}, true, elementIcon, tooltipElement);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err.message);
-  //       alert(this._errorTexts.errorServer);
-  //     });
-  // }
-
-  // _removeArticle(articleId, elementIcon, tooltipElement) {
-  //   // удалить из сохраненных
-  //   this._queryRemoveArticle(articleId)
-  //     .then((res) => {
-  //       this._renderIcon(false, elementIcon, tooltipElement);
-  //       elementIcon.removeAttribute('data-id');
-  //     })
-  //     .catch((err) => {
-  //       console.log(err.message);
-  //       let errForUser = '';
-  //       if (err.message === '403') errForUser = this._errorTexts.errorForbidden
-  //       else if (err.message === '404') errForUser = this._errorTexts.errorNotFound
-  //       else errForUser = this._errorTexts.errorServer;
-  //       alert(errForUser);
-  //     });
-  // }
-
-  _addCard(card, dateFormating, isSaved, keyword) {
+  addCard(card, dateFormating, isSaved, keyword, removableCard, idSavedCard) {
     // принимает экземпляр карточки и добавляет ее в список
-    // console.log('in _addCard');
-
     let clone = this._template.content.cloneNode(true);
     const img = clone.querySelector('.article__image');
-
-    clone.querySelector('.article__source').textContent = card.source.name;
-    clone.querySelector('.article__text').textContent = card.description;
-    clone.querySelector('.article__title').textContent = card.title;
-    clone.querySelector('.article__date').textContent = dateFormating(card.publishedAt);
-    img.setAttribute('src', card.urlToImage);
-    img.setAttribute('alt', card.title);
-    img.dataset.url = card.url;
-    clone.querySelector('.article').setAttribute('data-keyword', keyword);
-
     const elementIcon = clone.querySelector('.article__icon');
     const tooltipElement = clone.querySelector('.article__tooltip');
 
-    // console.log('elementIcon', elementIcon);
-    // console.log('tooltipElement', tooltipElement);
-    // const newArticle = {
-    //   keyword: keyword,
-    //   title: card.title,
-    //   text: card.description,
-    //   date: dateFormating(card.publishedAt),
-    //   source: card.source.name,
-    //   link: card.url,
-    //   image: card.urlToImage,
-    // };
-    // this.setEventListeners(newArticle, isSaved, elementIcon, tooltipElement);
-    this._renderIcon(isSaved, elementIcon, tooltipElement);
+    clone.querySelector('.article__source').textContent = !card.source.name ? card.source : card.source.name;
+    clone.querySelector('.article__text').textContent = !card.description ? card.text : card.description;
+    clone.querySelector('.article__title').textContent = card.title;
+    clone.querySelector('.article__date').textContent = !dateFormating ? card.date : dateFormating(card.publishedAt);
+    img.setAttribute('src', !card.urlToImage ? card.image : card.urlToImage);
+    img.setAttribute('alt', card.title);
+    img.dataset.url = !card.url ? card.link : card.url;
+    clone.querySelector('.article__keyword').textContent = !keyword ? card.keyword : keyword;
+    if (!!card._id) elementIcon.dataset.id = card._id;
+    if (!!idSavedCard) elementIcon.dataset.id = idSavedCard;
+
+    this._renderIcon(isSaved, elementIcon, tooltipElement, removableCard);
     this._container.appendChild(clone);
   }
-
-  // setEventListeners(newArticle, isSaved, elementIcon, tooltipElement) {
-  //   const isLoggedIn = !!localStorage.getItem('JWTnews');
-  //   if (!isLoggedIn) {
-  //     // удалить все обработчики
-  //     elementIcon.removeEventListener('click', this._removeArticle.bind(this, elementIcon.dataset.id, elementIcon, tooltipElement));
-  //     elementIcon.removeEventListener('click', this._saveArticle.bind(this, newArticle, elementIcon, tooltipElement));
-  //   };
-  //   if (isLoggedIn && !isSaved) {
-  //     // удалить другой обработчик, по клику сохранение карточки
-  //     elementIcon.addEventListener('click', this._saveArticle.bind(this, newArticle, elementIcon, tooltipElement), { once: true });
-  //   };
-  //   if (isLoggedIn && isSaved) {
-  //     // удалить другой обработчик, по клику удаление карточки из сохраненных
-  //     elementIcon.addEventListener('click', this._removeArticle.bind(this, elementIcon.getAttribute('data-id'), elementIcon, tooltipElement), { once: true });
-  //   };
-  // }
 }

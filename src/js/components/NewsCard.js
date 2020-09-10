@@ -3,6 +3,8 @@ export default class NewsCard {
     this._querySaveArticle = options.querySaveArticle;
     this._queryRemoveArticle = options.queryRemoveArticle;
     this._errorTexts = options.errorTexts;
+    this._icons = options.icons;
+    this._renderSavedArticles = options.renderSavedArticles;
   }
 
   _hideTooltip(elementTooltip) {
@@ -15,27 +17,23 @@ export default class NewsCard {
   }
 
   _setHoverImage(elementIcon) {
-    elementIcon.style.backgroundImage = 'url(images/bookmark-hover.svg)';
+    elementIcon.style.backgroundImage = this._icons.hoverIcon;
   }
 
   _setNormalImage(elementIcon) {
-    elementIcon.style.backgroundImage = 'url(images/bookmark-normal.svg)';
+    elementIcon.style.backgroundImage = this._icons.normalIcon;
   }
 
   _setMarkedImage(elementIcon) {
-    elementIcon.style.backgroundImage = 'url(images/bookmark-marked.svg)';
+    elementIcon.style.backgroundImage = this._icons.markedIcon;
   }
 
-  //_saveArticle(newArticle, elementIcon, elementTooltip) {
   _saveArticle(elementIcon, elementTooltip, event) {
     // добавить в сохраненные
-    // console.log(event.target);
-    // console.log(this._querySaveArticle);
     const newArticle = event.target.closest('.article');
     const imgElement = newArticle.querySelector('.article__image');
-    // console.log(newArticle);
     this._querySaveArticle({
-      keyword: newArticle.dataset.keyword,
+      keyword: newArticle.querySelector('.article__keyword').textContent,
       title: newArticle.querySelector('.article__title').textContent,
       text: newArticle.querySelector('.article__text').textContent,
       date: newArticle.querySelector('.article__date').textContent,
@@ -46,24 +44,25 @@ export default class NewsCard {
       .then((res) => {
         elementIcon.setAttribute('data-id', res.data._id);
         this.renderIcon(true, elementIcon, elementTooltip);
-        // this.setEventListeners({}, true, elementIcon, elementTooltip);
       })
       .catch((err) => {
-        // console.log(err.message);
         alert(this._errorTexts.errorServer);
       });
   }
 
-  _removeArticle(articleId, elementIcon, elementTooltip, event) {
-    // console.log(event);
+  _removeArticle(articleId, elementIcon, elementTooltip, removableCard, event) {
     // удалить из сохраненных
     this._queryRemoveArticle(articleId)
       .then((res) => {
-        this.renderIcon(false, elementIcon, elementTooltip);
-        elementIcon.removeAttribute('data-id');
+        if (removableCard) {
+          event.target.closest('.article').remove();
+          this._renderSavedArticles();
+        } else {
+          this.renderIcon(false, elementIcon, elementTooltip, false);
+          elementIcon.removeAttribute('data-id');
+        }
       })
       .catch((err) => {
-        // console.log(err.message);
         let errForUser = '';
         if (err.message === '403') errForUser = this._errorTexts.errorForbidden
         else if (err.message === '404') errForUser = this._errorTexts.errorNotFound
@@ -72,12 +71,10 @@ export default class NewsCard {
       });
   }
 
-  renderIcon(isSaved, elementIcon, elementTooltip) {
-    // console.log('in renderIcon elementTooltip', elementTooltip);
-
+  renderIcon(isSaved, elementIcon, elementTooltip, removableCard) {
     const isLoggedIn = !!localStorage.getItem('JWTnews');
     let bindSave = this._saveArticle.bind(this, elementIcon, elementTooltip);
-    let bindRemove = this._removeArticle.bind(this, elementIcon.dataset.id, elementIcon, elementTooltip);
+    let bindRemove = this._removeArticle.bind(this, elementIcon.dataset.id, elementIcon, elementTooltip, removableCard);
     // отрисовывает иконку карточки
     if (!isLoggedIn) { // неактивная иконка незалогиненого пользователя
       this._setNormalImage(elementIcon);
@@ -89,8 +86,6 @@ export default class NewsCard {
         this._hideTooltip(elementTooltip);
         this._setNormalImage(elementIcon);
       };
-      // elementIcon.removeEventListener('click', bindSave);
-      // elementIcon.removeEventListener('click', bindRemove);
       elementIcon.onclick = null;
     };
     if (isLoggedIn && !isSaved) { // несохраненная иконка залогиненого пользователя
@@ -102,16 +97,12 @@ export default class NewsCard {
       elementIcon.onmouseleave = () => {
         this._setNormalImage(elementIcon);
       };
-      // elementIcon.addEventListener('click', bindSave);//, { once: true });
-      // elementIcon.removeEventListener('click', bindRemove);
       elementIcon.onclick = bindSave;
     };
     if (isLoggedIn && isSaved) { // сохраненная иконка залогиненого пользователя
       elementIcon.onmouseenter = null;
       elementIcon.onmouseleave = null;
       this._setMarkedImage(elementIcon);
-      // elementIcon.addEventListener('click', bindRemove);//, { once: true });
-      // elementIcon.removeEventListener('click', bindSave);
       elementIcon.onclick = bindRemove;
     };
   }

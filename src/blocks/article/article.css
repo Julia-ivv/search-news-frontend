@@ -10,6 +10,7 @@
 @import url(./__keyword/article__keyword.css);
 @import url(./__tooltip/article__tooltip.css);
 @import url(./__tooltip/_hidden/article__tooltip_hidden.css);
+@import url(./__keyword/_hidden/article__keyword_hidden.css);
 
 .article {
   background-color: #fff;

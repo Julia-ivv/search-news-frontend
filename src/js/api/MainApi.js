@@ -1,16 +1,11 @@
 export default class MainApi {
   constructor(options) {
-    this._baseUrl = options.baseUrl; //baseUrl: 'http://localhost:3000/'
+    this._baseUrl = options.baseUrl;
     this._headers = options.headers;
-    // headers: {
-    //   'Content-Type': 'application/json',
-    // }
-    // console.log(this._headers['Content-Type']);
   }
 
   signup(newUser) {
     // регистрирует нового пользователя
-    // console.log(newUser.name);
     return fetch(this._baseUrl + 'signup', {
       method: 'POST',
       headers: this._headers,
@@ -23,8 +18,6 @@ export default class MainApi {
       .then((res) => {
         if (res.ok) return res.json();
         return Promise.reject(new Error(res.status));
-        // console.log(res);
-        // return Promise.reject(new Error(res));
       })
       .catch((err) => Promise.reject(new Error(err.message)));
   }
