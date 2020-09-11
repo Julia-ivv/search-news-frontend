@@ -1,6 +1,6 @@
 {
   "name": "search-news-frontend",
-  "version": "0.0.17",
+  "version": "0.0.26",
   "description": "frontend for a news search service",
   "main": "index.js",
   "scripts": {

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
@@ -19,6 +19,22 @@
         </button>
       </nav>
       <img src="<%=require('../images/icon-menu-black.svg').default%>" alt="open menu" class="header__menu-open"></img>
+
+      <div class="popup-menu popup-menu_hidden">
+        <div class="popup-menu__drop-down-menu">
+          <header class="header header_style_black">
+            <p class="logo">NewsExplorer</p>
+            <img src="<%=require('../images/menu-close-black.svg').default%>" alt="close" class="popup-menu__close">
+          </header>
+          <nav class="popup-menu__content">
+            <a href="./index.html" class="popup-menu__link">Главная</a>
+            <a href="./articles.html" class="popup-menu__link popup-menu__link_hidden" id="articles-popup-menu">Сохранённые статьи</a>
+            <button class="popup-menu__btn-login">Авторизоваться
+              <img src="<%=require('../images/logout-white.svg').default%>" alt="logout" class="popup-menu__btn-icon popup-menu__btn-icon_hidden">
+            </button>
+          </nav>
+        </div>
+      </div>
     </header>
 
     <section class="search">
@@ -31,60 +47,35 @@
     </section>
   </div>
 
-  <section class="results root__results">
+  <section class="results root__results results_hidden">
     <h3 class="block-title results__block-title">Результаты поиска</h3>
-    <div class="articles">
+    <div class="articles"></div>
+    <template id="article">
       <div class="article">
-        <img src="<%=require('../images/image_08.png').default%>" alt="Национальное достояние – парки" class="article__image">
+        <img src="" alt="" data-url="" class="article__image">
         <div class="article__about">
-          <p class="article__date">2 августа, 2019</p>
-          <h4 class="article__title">Национальное достояние – парки</h4>
-          <p class="article__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
-          <p class="article__source">Лента.ру</p>
+          <p class="article__date"></p>
+          <h4 class="article__title"></h4>
+          <p class="article__text"></p>
+          <p class="article__source"></p>
         </div>
-        <button class="article__icon article__icon_type_bookmark" data-title="Войдите, чтобы сохранять статьи"></button>
-
+        <button class="article__icon article__icon_type_bookmark"></button>
+        <p class="article__keyword article__keyword_hidden"></p>
+        <p class="article__tooltip article__tooltip_hidden">Войдите, чтобы сохранять статьи</p>
       </div>
-      <div class="article">
-        <img src="<%=require('../images/image_04.png').default%>" alt="Лесные огоньки" class="article__image">
-        <div class="article__about">
-          <p class="article__date">2 августа, 2019</p>
-          <h4 class="article__title">Лесные огоньки: история одной фотографии</h4>
-          <p class="article__text">Фотограф отвлеклась от освещения суровой политической реальности Мексики, чтобы запечатлеть ускользающую красоту одного из местных чудес природы.</p>
-          <p class="article__source">Медуза</p>
-        </div>
-        <button class="article__icon article__icon_type_bookmark" data-title="Войдите, чтобы сохранять статьи"></button>
-      </div>
-      <div class="article">
-        <img src="<%=require('../images/image_07.png').default%>" alt="Первозданная тайга" class="article__image">
-        <div class="article__about">
-          <p class="article__date">2 августа, 2019</p>
-          <h4 class="article__title">«Первозданная тайга»: новый фотопроект Игоря Шпиленка</h4>
-          <p class="article__text">Знаменитый фотограф снимает первозданные леса России, чтобы рассказать о необходимости их сохранения. В этот раз он отправился в Двинско-Пинежскую тайгу, где</p>
-          <p class="article__source">Риа</p>
-        </div>
-        <button class="article__icon article__icon_type_bookmark" data-title="Войдите, чтобы сохранять статьи"></button>
-      </div>
-      <div class="article">
-        <img src="<%=require('../images/image_06.png').default%>" alt="Национальное достояние – парки" class="article__image">
-        <div class="article__about">
-          <p class="article__date">2 августа, 2019</p>
-          <h4 class="article__title">Национальное достояние – парки</h4>
-          <p class="article__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
-          <p class="article__source">Дзен</p>
-        </div>
-        <button class="article__icon article__icon_type_bookmark" data-title="Войдите, чтобы сохранять статьи"></button>
-      </div>
-    </div>
-    <button class="button results__more-button">Показать еще</button>
+    </template>
+    <template id="button-more">
+      <button class="button results__more-button results__more-button_hidden">Показать еще</button>
+    </template>
+    <p class="results__error block-text results__error_hidden"></p>
   </section>
 
-  <section class="preloader root__preloader">
+  <section class="preloader root__preloader preloader_hidden">
     <i class="circle-preloader"></i>
     <p class="block-text block-text_style_gray preloader__block-text">Идет поиск новостей...</p>
   </section>
 
-  <section class="not-found root__not-found">
+  <section class="not-found root__not-found not-found_hidden">
     <img src="<%=require('../images/not-found.svg').default%>" alt="Ничего не найдено" class="not-found__image">
     <p class="not-found__title">Ничего не найдено</p>
     <p class="block-text block-text_style_gray not-found__block-text">К сожалению по вашему запросу ничего не найдено.</p>
@@ -92,14 +83,14 @@
 
   <section class="author root__author">
     <picture>
-      <source srcset="<%=require('../images/avatar-320.png').default%>" media="(max-width: 320px)">
-      <source srcset="<%=require('../images/avatar-768.png').default%>" media="(max-width: 768px)">
-      <img src="<%=require('../images/avatar.png').default%>" alt="Аватар" class="author__image">
+      <source srcset="<%=require('../images/avatar-320.jpg').default%>" media="(max-width: 320px)">
+      <source srcset="<%=require('../images/avatar-768.jpg').default%>" media="(max-width: 768px)">
+      <img src="<%=require('../images/avatar.jpg').default%>" alt="Аватар" class="author__image">
     </picture>
     <div class="author__about">
       <h3 class="block-title author__block-title">Об авторе</h3>
-      <p class="block-text block-text_style_dark author__block-text">Это блок с описанием автора проекта. Здесь следует указать, как вас зовут, чем вы занимаетесь, какими технологиями разработки владеете.</p>
-      <p class="block-text block-text_style_dark author__block-text">Также можно рассказать о процессе обучения в Практикуме, чему вы тут научились, и чем можете помочь потенциальным заказчикам.</p>
+      <p class="block-text block-text_style_dark author__block-text">Меня зовут Юля. Я прошла обучение в Яндекс.Практикум на курсе веб-разработчик. Изучила HTML, CSS, JS, Node.js, Webpack, Express.js.</p>
+      <p class="block-text block-text_style_dark author__block-text">В процессе обучения я научилась делать небольшие сайты с адаптивным дизайном, работать с базой данных MongoDB, изучила основы бэкенда.</p>
     </div>
   </section>
 
@@ -129,48 +120,32 @@
     </nav>
   </footer>
 
-  <div class="popup-menu popup-menu_hidden">
-    <div class="popup-menu__drop-down-menu">
-      <header class="header header_style_black">
-        <p class="logo">NewsExplorer</p>
-        <img src="<%=require('../images/menu-close-black.svg').default%>" alt="close" class="popup-menu__close">
-      </header>
-      <nav class="popup-menu__content">
-        <a href="./index.html" class="popup-menu__link">Главная</a>
-        <a href="./articles.html" class="popup-menu__link" id="articles-popup-menu">Сохранённые статьи</a>
-        <button class="popup-menu__btn-login">Авторизоваться
-          <img src="<%=require('../images/logout-white.svg').default%>" alt="logout" class="popup-menu__btn-icon popup-menu__btn-icon_hidden">
-        </button>
-      </nav>
-    </div>
-  </div>
-
-  <div class="popup" id="popup-login">
+  <div class="popup" id="popup-signin">
     <div class="popup__content">
       <button class="popup__close"></button>
       <h3 class="popup__title">Вход</h3>
-      <form class="popup__form" name="form-login" id="form-login">
+      <form class="popup__form" name="form-signin" id="form-signin">
         <div class="popup__input-container">
           <label class="popup__input-title">Email
-            <input type="text" inputmode="email" name="email" pattern="(?!.*--)[a-zA-Z0-9][\-\.\w]*(?<!-)@[a-zA-Z0-9]+[\-\.\w]*(?<!-)\.[a-zA-Z]+$" autocomplete="off" required class="popup__input popup__input_type_email" placeholder="Введите почту">
+            <input type="email" inputmode="email" id="email-signin" name="email-signin" pattern="(?!.*--)[a-zA-Z0-9][\-\.\w]*(?<!-)@[a-zA-Z0-9]+[\-\.\w]*(?<!-)\.[a-zA-Z]+$" autocomplete="off" required class="popup__input popup__input_type_email" placeholder="Введите почту">
           </label>
-          <span id="error-email-login" class="error-message error-message_type_input error-message_visible">Неправильный формат email</span>
+          <span id="error-email-signin" class="error-message error-message_type_input"></span>
         </div>
         <div class="popup__input-container">
           <label class="popup__input-title">Пароль
-            <input type="password" inputmode="text" name="password" autocomplete="off" required class="popup__input popup__input_type_password" placeholder="Введите пароль">
+            <input type="password" inputmode="text" id="password-signin" name="password-signin" autocomplete="off" required class="popup__input popup__input_type_password" placeholder="Введите пароль">
           </label>
-          <span id="error-password-login" class="error-message error-message_type_input error-message_visible">Это обязательное поле</span>
+          <span id="error-password-signin" class="error-message error-message_type_input"></span>
         </div>
         <div class="popup__input-container">
-          <span id="error-login" class="error-message error-message_type_button error-message_visible">Ошибка авторизации</span>
-          <button type="submit" class="button popup__button button_style_gray">Войти</button>
-        </div>
-        <div class="popup__or">
-          <p>или&nbsp;</p>
-          <button type="button" class="popup__or-button">Зарегистрироваться</button>
+          <span id="error-signin" class="error-message error-message_type_button"></span>
+          <button disabled type="submit" class="button popup__button button_style_gray">Войти</button>
         </div>
       </form>
+      <div class="popup__or">
+        <p>или&nbsp;</p>
+        <button type="button" class="popup__or-button">Зарегистрироваться</button>
+      </div>
     </div>
   </div>
 
@@ -181,31 +156,31 @@
       <form class="popup__form" name="form-signup" id="form-signup">
         <div class="popup__input-container">
           <label class="popup__input-title">Email
-            <input type="text" inputmode="email" name="email" pattern="(?!.*--)[a-zA-Z0-9][\-\.\w]*(?<!-)@[a-zA-Z0-9]+[\-\.\w]*(?<!-)\.[a-zA-Z]+$" autocomplete="off" required class="popup__input popup__input_type_email" placeholder="Введите почту">
+            <input type="email" inputmode="email" id="email-signup" name="email-signup" pattern="(?!.*--)[a-zA-Z0-9][\-\.\w]*(?<!-)@[a-zA-Z0-9]+[\-\.\w]*(?<!-)\.[a-zA-Z]+$" autocomplete="off" required class="popup__input popup__input_type_email" placeholder="Введите почту">
           </label>
-          <span id="error-email-signup" class="error-message error-message_type_input">Неправильный формат email</span>
+          <span id="error-email-signup" class="error-message error-message_type_input"></span>
         </div>
         <div class="popup__input-container">
           <label class="popup__input-title">Пароль
-            <input type="password" inputmode="text" name="password" autocomplete="off" required class="popup__input popup__input_type_password" placeholder="Введите пароль">
+            <input type="password" inputmode="text" id="password-signup" name="password-signup" autocomplete="off" required class="popup__input popup__input_type_password" placeholder="Введите пароль">
           </label>
-          <span id="error-password-signup" class="error-message error-message_type_input">Это обязательное поле</span>
+          <span id="error-password-signup" class="error-message error-message_type_input"></span>
         </div>
         <div class="popup__input-container">
           <label class="popup__input-title">Имя
-            <input type="text" inputmode="text" name="name" autocomplete="off" required minlength="2" maxlength="30" class="popup__input popup__input_type_name" placeholder="Введите свое имя">
+            <input type="text" inputmode="text" id="name-signup" name="name-signup" autocomplete="off" required minlength="2" maxlength="30" class="popup__input popup__input_type_name" placeholder="Введите свое имя">
           </label>
-          <span id="error-name" class="error-message error-message_type_input">Длина от 2 до 30 символов</span>
+          <span id="error-name-signup" class="error-message error-message_type_input"></span>
         </div>
         <div class="popup__input-container">
-          <span id="error-signup" class="error-message error-message_type_button">Такой пользователь уже есть</span>
-          <button type="submit" class="button popup__button button_style_blue">Зарегистрироваться</button>
-        </div>
-        <div class="popup__or">
-          <p>или&nbsp;</p>
-          <button type="button" class="popup__or-button">Войти</button>
+          <span id="error-signup" class="error-message error-message_type_button"></span>
+          <button disabled type="submit" class="button popup__button button_style_gray">Зарегистрироваться</button>
         </div>
       </form>
+      <div class="popup__or">
+        <p>или&nbsp;</p>
+        <button type="button" class="popup__or-button">Войти</button>
+      </div>
     </div>
   </div>
 

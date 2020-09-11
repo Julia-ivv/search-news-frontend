@@ -1,0 +1,55 @@
+.article__tooltip {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: .83vw;
+  line-height: .97vw;
+
+  margin: 0;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 40px;
+  color: #000000;
+  background-color: #fff;
+
+  position: absolute;
+  top: 4%;
+  right: 20%;
+  z-index: 2;
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .article__tooltip {
+    top: 3%;
+    right: 22%;
+  }
+}
+
+@media (max-width: 900px) {
+  .article__tooltip {
+    top: 3%;
+    right: 25%;
+  }
+}
+
+@media (max-width: 768px) {
+  .article__tooltip {
+    top: 1.57%;
+    right: 25%;
+    height: 8.9%;
+  }
+}
+
+@media (max-width: 320px) {
+  .article__tooltip {
+    top: 16px;
+    right: 65px;
+    height: 40px;
+    font-size: 10px;
+    line-height: 12px;
+  }
+}
